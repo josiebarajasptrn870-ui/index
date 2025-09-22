@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenithFact Network - Trusted News Source</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1a365d;
+            --secondary: #2d3748;
+            --accent: #4299e1;
+            --light: #e2e8f0;
+            --dark: #2d3748;
+            --text: #2d3748;
+            --text-light: #718096;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--accent);
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: var(--primary);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: url('https://plus.unsplash.com/premium_photo-1691223714409-b0cb1629f0f7?q=80&w=1220&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: flex-end;
+            color: white;
+            position: relative;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            padding: 2rem;
+            width: 100%;
+        }
+        
+        .hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            max-width: 800px;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        
+        .btn:hover {
+            background: #3182ce;
+            transform: translateY(-2px);
+        }
+        
+        /* News Grid */
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .news-card:hover .card-img img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .category {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .card-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* Featured Section */
+        .featured {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .main-story {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .main-story img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .story-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+            color: white;
+        }
+        
+        .side-stories {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .side-story {
+            display: flex;
+            gap: 1rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .side-story img {
+            width: 120px;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .side-content {
+            padding: 1rem 1rem 1rem 0;
+        }
+        
+        .side-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .newsletter h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 5px 5px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background: #3182ce;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-section p {
+            margin-bottom: 1rem;
+            color: #cbd5e0;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .links {
+            list-style: none;
+        }
+        
+        .links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .links a {
+            color: #cbd5e0;
+            transition: color 0.3s;
+        }
+        
+        .links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background 0.3s, transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cbd5e0;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+            
+            .featured {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 5px;
+                margin-bottom: 1rem;
+            }
+            
+            .newsletter-form button {
+                border-radius: 5px;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-newspaper fa-2x"></i>
+                <h1>Zenith<span>Fact</span> Network</h1>
+            </div>
+            <nav>
+                <ul>
+                     <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+					<li><a href="privacy.html">Privacy Policy</a></li>
+					<li><a href="terms.html">Terms Of Service</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>News That Shapes Tomorrow</h2>
+            <p>World leaders gather to discuss urgent action plans as climate data shows accelerating changes to global ecosystems.</p>
+            <a href="#" class="btn">Read Full Story</a>
+        </div>
+    </section>
+
+    <!-- Featured News -->
+    <section class="container">
+        <h2 class="section-title">Featured Stories</h2>
+        <div class="featured">
+            <div class="main-story">
+                <img src="https://images.unsplash.com/photo-1569163139394-de44aa9a21dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Tech Innovation">
+                <div class="story-content">
+                    <span class="category">Technology</span>
+                    <h3>Breakthrough in Quantum Computing Announced by Researchers</h3>
+                    <p>Scientists achieve quantum supremacy with new 128-qubit processor that could revolutionize computing...</p>
+                </div>
+            </div>
+            <div class="side-stories">
+                <div class="side-story">
+                    <img src="https://images.unsplash.com/photo-1581578021517-5d8ad8597852?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Economy">
+                    <div class="side-content">
+                        <h3>Global Markets Respond to New Economic Policies</h3>
+                        <div class="card-meta">
+                            <span><i class="far fa-clock"></i> 4 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="side-story">
+                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d15?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Health">
+                    <div class="side-content">
+                        <h3>New Study Reveals Benefits of Mediterranean Diet</h3>
+                        <div class="card-meta">
+                            <span><i class="far fa-clock"></i> 6 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="side-story">
+                    <img src="https://images.unsplash.com/photo-1460881680858-30d872d5b530?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Sports">
+                    <div class="side-content">
+                        <h3>Championship Finals Set After Dramatic Semifinals</h3>
+                        <div class="card-meta">
+                            <span><i class="far fa-clock"></i> 8 hours ago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News -->
+    <section class="container">
+        <h2 class="section-title">Latest News</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Politics">
+                </div>
+                <div class="card-content">
+                    <span class="category">Politics</span>
+                    <h3>New Legislation Aims to Address Housing Crisis</h3>
+                    <p>Comprehensive bill proposes measures to increase affordable housing supply and provide rental assistance to low-income families...</p>
+                    <div class="card-meta">
+                        <span><i class="far fa-user"></i> Sarah Johnson</span>
+                        <span><i class="far fa-clock"></i> 2 hours ago</span>
+                    </div>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Science">
+                </div>
+                <div class="card-content">
+                    <span class="category">Science</span>
+                    <h3>NASA Announces Discovery of Earth-like Planet</h3>
+                    <p>Astronomers identify exoplanet with similar size and temperature to Earth located in habitable zone of its star...</p>
+                    <div class="card-meta">
+                        <span><i class="far fa-user"></i> Michael Chen</span>
+                        <span><i class="far fa-clock"></i> 5 hours ago</span>
+                    </div>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Health">
+                </div>
+                <div class="card-content">
+                    <span class="category">Health</span>
+                    <h3>Researchers Make Progress in Alzheimer's Treatment</h3>
+                    <p>New drug therapy shows promise in slowing cognitive decline in early-stage patients during clinical trials...</p>
+                    <div class="card-meta">
+                        <span><i class="far fa-user"></i> Dr. Emily Rodriguez</span>
+                        <span><i class="far fa-clock"></i> 7 hours ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="container">
+        <h2 class="section-title">Technology</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="AI Technology">
+                </div>
+                <div class="card-content">
+                    <span class="category">Artificial Intelligence</span>
+                    <h3>Ethical AI Framework Adopted by Major Tech Companies</h3>
+                    <p>Industry leaders commit to new standards for responsible AI development and deployment amid growing concerns about bias and privacy...</p>
+                    <div class="card-meta">
+                        <span><i class="far fa-user"></i> David Kim</span>
+                        <span><i class="far fa-clock"></i> 9 hours ago</span>
+                    </div>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1603732551681-2e91159b9dc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Cybersecurity">
+                </div>
+                <div class="card-content">
+                    <span class="category">Cybersecurity</span>
+                    <h3>Global Cybersecurity Initiative Launches to Combat Threats</h3>
+                    <p>International coalition forms to address rising sophisticated cyber attacks targeting critical infrastructure...</p>
+                    <div class="card-meta">
+                        <span><i class="far fa-user"></i> Angela White</span>
+                        <span><i class="far fa-clock"></i> 12 hours ago</span>
+                    </div>
+                </div>
+            </div>
+            <div class="news-card">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1581094288338-231b058b38b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Robotics">
+                </div>
+                <div class="card-content">
+                    <span class="category">Robotics</span>
+                    <h3>Advanced Humanoid Robots Enter Consumer Market</h3>
+                    <p>New generation of domestic robots capable of performing complex household tasks now available to early adopters...</p>
+                    <div class="card-meta">
+                        <span><i class="far fa-user"></i> Robert Takahashi</span>
+                        <span><i class="far fa-clock"></i> 1 day ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Stay Updated with ZenithFact Network</h2>
+            <p>Subscribe to our newsletter for daily news digests and exclusive content</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About ZenithFact Network</h3>
+                    <p>ZenithFact Network is a leading global news organization dedicated to delivering accurate, unbiased news coverage across all platforms. Our mission is to inform, educate, and empower our audience.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 News Avenue, Metro City, MC 10001</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-ZENITH (936484)</li>
+                        <li><i class="fas fa-envelope"></i> contact@zenithfact.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ZenithFact Network. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

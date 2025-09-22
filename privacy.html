@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - ZenithFact Network</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1a365d;
+            --secondary: #2d3748;
+            --accent: #4299e1;
+            --light: #e2e8f0;
+            --dark: #2d3748;
+            --text: #2d3748;
+            --text-light: #718096;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--accent);
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: var(--primary);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        .breadcrumb li {
+            margin: 0 0.5rem;
+        }
+        
+        .breadcrumb li:not(:last-child):after {
+            content: ">";
+            margin-left: 1rem;
+            color: var(--light);
+        }
+        
+        .breadcrumb a {
+            color: var(--light);
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+        }
+        
+        /* Privacy Content */
+        .privacy-content {
+            background: white;
+            border-radius: 10px;
+            padding: 3rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .privacy-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .privacy-section h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .privacy-section p {
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        
+        .privacy-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .privacy-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .highlight {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent);
+            margin: 1.5rem 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--light);
+            color: var(--primary);
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-section p {
+            margin-bottom: 1rem;
+            color: #cbd5e0;
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .links {
+            list-style: none;
+        }
+        
+        .links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .links a {
+            color: #cbd5e0;
+            transition: color 0.3s;
+        }
+        
+        .links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background 0.3s, transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cbd5e0;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .privacy-content {
+                padding: 1.5rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-newspaper fa-2x"></i>
+                <h1>Zenith<span>Fact</span> Network</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+					<li><a href="privacy.html">Privacy Policy</a></li>
+					<li><a href="terms.html">Terms Of Service</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Privacy Policy</h1>
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li>Privacy Policy</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Privacy Content -->
+    <section class="container">
+        <div class="privacy-content">
+            <div class="privacy-section">
+                <h2>1. Introduction</h2>
+                <p>Welcome to ZenithFact Network. We are committed to protecting your personal information and your right to privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.</p>
+                <p>If you have any questions or concerns about our policy, or our practices with regards to your personal information, please contact us at privacy@zenithfact.com.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>2. Information We Collect</h2>
+                <p>We collect personal information that you voluntarily provide to us when you register on our website, express an interest in obtaining information about us or our products and services, or otherwise when you contact us.</p>
+                
+                <h3>Personal Information You Disclose to Us</h3>
+                <p>We may collect the following personal information that you provide to us:</p>
+                <ul>
+                    <li>Name and Contact Data (email address, phone number)</li>
+                    <li>Account Credentials (passwords, security questions)</li>
+                    <li>Payment Information (credit card numbers, billing address)</li>
+                    <li>Social Media Login Data (if you choose to link your account)</li>
+                    <li>Preferences and Interests (news categories you follow)</li>
+                </ul>
+                
+                <h3>Information Automatically Collected</h3>
+                <p>We automatically collect certain information when you visit, use, or navigate our website. This information does not reveal your specific identity but may include:</p>
+                <ul>
+                    <li>Device and Usage Information (IP address, browser type, pages viewed)</li>
+                    <li>Location Data (general location based on IP address)</li>
+                    <li>Cookies and Similar Technologies (see our Cookie Policy below)</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>3. How We Use Your Information</h2>
+                <p>We use personal information collected via our website for a variety of business purposes described below:</p>
+                <ul>
+                    <li>To provide and maintain our service</li>
+                    <li>To notify you about changes to our service</li>
+                    <li>To allow you to participate in interactive features of our website</li>
+                    <li>To provide customer support</li>
+                    <li>To gather analysis or valuable information so that we can improve our service</li>
+                    <li>To monitor the usage of our service</li>
+                    <li>To detect, prevent and address technical issues</li>
+                    <li>To provide you with news, special offers, and general information about other goods, services, and events which we offer</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>4. Legal Basis for Processing Personal Information</h2>
+                <p>We process your personal information under the following legal bases:</p>
+                <ul>
+                    <li>Your consent</li>
+                    <li>Performance of a contract with you</li>
+                    <li>Our legitimate business interests</li>
+                    <li>Compliance with our legal obligations</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>5. How We Share Your Information</h2>
+                <p>We only share information with your consent, to comply with laws, to provide you with services, to protect your rights, or to fulfill business obligations.</p>
+                
+                <p>We may process or share your data that we hold based on the following legal basis:</p>
+                <ul>
+                    <li><strong>Consent:</strong> We may process your data if you have given us specific consent to use your personal information for a specific purpose.</li>
+                    <li><strong>Legitimate Interests:</strong> We may process your data when it is reasonably necessary to achieve our legitimate business interests.</li>
+                    <li><strong>Performance of a Contract:</strong> Where we have entered into a contract with you, we may process your personal information to fulfill the terms of our contract.</li>
+                    <li><strong>Legal Obligations:</strong> We may disclose your information where we are legally required to do so in order to comply with applicable law, governmental requests, a judicial proceeding, court order, or legal process.</li>
+                </ul>
+                
+                <p>We may share your information with third parties including:</p>
+                <ul>
+                    <li>Service Providers (hosting, payment processing, analytics)</li>
+                    <li>Business Partners (advertising networks, content partners)</li>
+                    <li>Affiliates (companies within our corporate group)</li>
+                </ul>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>6. Cookies and Tracking Technologies</h2>
+                <p>We use cookies and similar tracking technologies to track the activity on our service and hold certain information.</p>
+                
+                <p>Types of cookies we use:</p>
+                <ul>
+                    <li><strong>Essential Cookies:</strong> Necessary for the operation of our website.</li>
+                    <li><strong>Functionality Cookies:</strong> Allow us to remember choices you make.</li>
+                    <li><strong>Analytical/Performance Cookies:</strong> Allow us to recognize and count the number of visitors.</li>
+                    <li><strong>Targeting Cookies:</strong> Record your visit to our website, the pages you have visited, and the links you have followed.</li>
+                </ul>
+                
+                <div class="highlight">
+                    <p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our service.</p>
+                </div>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>7. Data Retention</h2>
+                <p>We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy policy, unless a longer retention period is required or permitted by law.</p>
+                
+                <p>We will retain and use your information to the extent necessary to comply with our legal obligations, resolve disputes, and enforce our policies.</p>
+                
+                <p>When we have no ongoing legitimate business need to process your personal information, we will either delete or anonymize it.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>8. Data Security</h2>
+                <p>We have implemented appropriate technical and organizational security measures designed to protect the security of any personal information we process.</p>
+                
+                <p>However, please also remember that we cannot guarantee that the internet itself is 100% secure. Although we will do our best to protect your personal information, transmission of personal information to and from our website is at your own risk.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>9. Your Privacy Rights</h2>
+                <p>Depending on your location, you may have the following rights regarding your personal information:</p>
+                
+                <table>
+                    <tr>
+                        <th>Right</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>Access</td>
+                        <td>You have the right to request copies of your personal data.</td>
+                    </tr>
+                    <tr>
+                        <td>Rectification</td>
+                        <td>You have the right to request that we correct any information you believe is inaccurate.</td>
+                    </tr>
+                    <tr>
+                        <td>Erasure</td>
+                        <td>You have the right to request that we erase your personal data, under certain conditions.</td>
+                    </tr>
+                    <tr>
+                        <td>Restrict Processing</td>
+                        <td>You have the right to request that we restrict the processing of your personal data.</td>
+                    </tr>
+                    <tr>
+                        <td>Data Portability</td>
+                        <td>You have the right to request that we transfer the data that we have collected to another organization.</td>
+                    </tr>
+                    <tr>
+                        <td>Object to Processing</td>
+                        <td>You have the right to object to our processing of your personal data.</td>
+                    </tr>
+                </table>
+                
+                <p>To exercise any of these rights, please contact us at privacy@zenithfact.com.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>10. Children's Privacy</h2>
+                <p>Our service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13.</p>
+                
+                <p>If you are a parent or guardian and you are aware that your child has provided us with personal data, please contact us. If we become aware that we have collected personal data from anyone under the age of 13 without verification of parental consent, we take steps to remove that information from our servers.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>11. Updates to This Policy</h2>
+                <p>We may update our privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on this page and updating the "Last Updated" date.</p>
+                
+                <p>You are advised to review this privacy policy periodically for any changes. Changes to this privacy policy are effective when they are posted on this page.</p>
+            </div>
+            
+            <div class="privacy-section">
+                <h2>12. Contact Us</h2>
+                <p>If you have any questions or concerns about this privacy policy, please contact us at:</p>
+                <ul class="contact-info">
+                    <li><i class="fas fa-envelope"></i> privacy@zenithfact.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-ZENITH (936484)</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 News Avenue, Metro City, MC 10001</li>
+                </ul>
+                <p>Last updated: September 16, 2023</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About ZenithFact Network</h3>
+                    <p>ZenithFact Network is a leading global news organization dedicated to delivering accurate, unbiased news coverage across all platforms. Our mission is to inform, educate, and empower our audience.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 News Avenue, Metro City, MC 10001</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-ZENITH (936484)</li>
+                        <li><i class="fas fa-envelope"></i> contact@zenithfact.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ZenithFact Network. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
