@@ -1,738 +1,494 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZenithFact Network - Trusted News Source</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        :root {
-            --primary: #1a365d;
-            --secondary: #2d3748;
-            --accent: #4299e1;
-            --light: #e2e8f0;
-            --dark: #2d3748;
-            --text: #2d3748;
-            --text-light: #718096;
-        }
-        
-        body {
-            background-color: #f8f9fa;
-            color: var(--text);
-            line-height: 1.6;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        a {
-            text-decoration: none;
-            color: var(--accent);
-            transition: color 0.3s;
-        }
-        
-        a:hover {
-            color: var(--primary);
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo h1 {
-            font-size: 1.8rem;
-            margin-left: 10px;
-            font-weight: 700;
-        }
-        
-        .logo span {
-            color: var(--accent);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-        
-        nav ul li a {
-            color: white;
-            font-weight: 500;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-        
-        nav ul li a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--accent);
-            transition: width 0.3s;
-        }
-        
-        nav ul li a:hover:after {
-            width: 100%;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: url('https://plus.unsplash.com/premium_photo-1691223714409-b0cb1629f0f7?q=80&w=1220&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
-            height: 500px;
-            display: flex;
-            align-items: flex-end;
-            color: white;
-            position: relative;
-        }
-        
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 100%);
-        }
-        
-        .hero-content {
-            position: relative;
-            padding: 2rem;
-            width: 100%;
-        }
-        
-        .hero-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            max-width: 800px;
-        }
-        
-        .hero-content p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin-bottom: 1.5rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background 0.3s, transform 0.3s;
-        }
-        
-        .btn:hover {
-            background: #3182ce;
-            transform: translateY(-2px);
-        }
-        
-        /* News Grid */
-        .section-title {
-            text-align: center;
-            margin: 3rem 0 2rem;
-            font-size: 2rem;
-            color: var(--primary);
-            position: relative;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 3px;
-            background: var(--accent);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .news-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        .card-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .card-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .news-card:hover .card-img img {
-            transform: scale(1.05);
-        }
-        
-        .card-content {
-            padding: 1.5rem;
-        }
-        
-        .category {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
-        }
-        
-        .card-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-        
-        .card-content p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-        }
-        
-        .card-meta {
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-        
-        /* Featured Section */
-        .featured {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .main-story {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .main-story img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
-        
-        .story-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 2rem;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
-            color: white;
-        }
-        
-        .side-stories {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        
-        .side-story {
-            display: flex;
-            gap: 1rem;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .side-story img {
-            width: 120px;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .side-content {
-            padding: 1rem 1rem 1rem 0;
-        }
-        
-        .side-content h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        /* Newsletter */
-        .newsletter {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .newsletter h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .newsletter p {
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            font-size: 1.1rem;
-        }
-        
-        .newsletter-form {
-            display: flex;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
-        .newsletter-form input {
-            flex: 1;
-            padding: 1rem;
-            border: none;
-            border-radius: 5px 0 0 5px;
-            font-size: 1rem;
-        }
-        
-        .newsletter-form button {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 0 1.5rem;
-            border-radius: 0 5px 5px 0;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        .newsletter-form button:hover {
-            background: #3182ce;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        .footer-section h3:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 2px;
-            background: var(--accent);
-            bottom: 0;
-            left: 0;
-        }
-        
-        .footer-section p {
-            margin-bottom: 1rem;
-            color: #cbd5e0;
-        }
-        
-        .contact-info {
-            list-style: none;
-        }
-        
-        .contact-info li {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .contact-info i {
-            margin-right: 10px;
-            color: var(--accent);
-        }
-        
-        .links {
-            list-style: none;
-        }
-        
-        .links li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .links a {
-            color: #cbd5e0;
-            transition: color 0.3s;
-        }
-        
-        .links a:hover {
-            color: var(--accent);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: background 0.3s, transform 0.3s;
-        }
-        
-        .social-links a:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #cbd5e0;
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            nav ul li {
-                margin: 0.5rem;
-            }
-            
-            .hero {
-                height: 400px;
-            }
-            
-            .hero-content h2 {
-                font-size: 2rem;
-            }
-            
-            .featured {
-                grid-template-columns: 1fr;
-            }
-            
-            .newsletter-form {
-                flex-direction: column;
-            }
-            
-            .newsletter-form input {
-                border-radius: 5px;
-                margin-bottom: 1rem;
-            }
-            
-            .newsletter-form button {
-                border-radius: 5px;
-                padding: 1rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Doventha · bake workshop</title>
+  <!-- google fonts (unique combination) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <style>
+    /* ----- global reset & variables (fresh palette) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-body: #f9f6f0;
+      --bg-surface: #ffffff;
+      --bg-accent: #ede6dc;
+      --text-primary: #221f1a;
+      --text-secondary: #3f3a32;
+      --text-muted: #6b6258;
+      --brand-1: #b45f3b;      /* warm terracotta */
+      --brand-2: #7d8f7a;      · sage green
+      --brand-3: #c6a88b;      · sand beige
+      --border-light: #e1d9d0;
+      --shadow-card: 0 12px 28px rgba(0,0,0,0.03), 0 4px 12px rgba(0,0,0,0.02);
+      --radius-lg: 28px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+      --font-body: 'Outfit', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Newsreader', Georgia, serif;
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 2rem;
+      --space-lg: 3.5rem;
+      --space-xl: 5rem;
+      --max-width: 1120px;
+    }
+
+    body {
+      background: var(--bg-body);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      padding: 0 1rem;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.8rem 0 3rem;
+    }
+
+    /* typography */
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-top: 0;
+    }
+
+    h1 { font-size: 2.8rem; font-weight: 600; }
+    h2 { font-size: 2.2rem; margin: 2.2rem 0 1.2rem; }
+    h3 { font-size: 1.5rem; margin: 1.8rem 0 0.8rem; font-weight: 500; }
+    p { margin-bottom: 1.2rem; color: var(--text-secondary); }
+
+    a {
+      color: var(--brand-1);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    a:hover { color: #9c4d2b; }
+
+    /* ----- header / navigation (clean, minimal) ----- */
+    .site-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0 1.8rem;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 2.2rem;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--brand-1); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 450;
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+    .nav-links a { color: var(--text-secondary); }
+    .nav-links a:hover { color: var(--brand-1); }
+
+    /* ----- cards & modules (unique style) ----- */
+    .card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem 2rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(225, 217, 208, 0.4);
+      transition: all 0.2s;
+    }
+
+    .card-article {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1.8rem;
+      border-left: 6px solid var(--brand-3);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 1.2rem;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .grid-3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 1.9rem;
+      margin: 2.8rem 0 1.2rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 3px solid var(--brand-3);
+      display: inline-block;
+    }
+
+    .section-sub {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+
+    /* hero (content-first, minimal image) */
+    .hero {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 2.8rem 3rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border-light);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .hero-content {
+      flex: 2;
+      min-width: 260px;
+    }
+    .hero-content h1 {
+      font-size: 2.9rem;
+      margin-bottom: 0.75rem;
+    }
+    .hero-content p {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      margin-top: 1.2rem;
+    }
+    .hero-tags span {
+      background: var(--bg-accent);
+      padding: 0.25rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .hero-image {
+      flex: 1;
+      min-width: 160px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #d9cfc0;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4e453b;
+      font-weight: 300;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300"><rect width="400" height="300" fill="%23e2d6c8"/><circle cx="200" cy="120" r="60" fill="%23b45f3b" opacity="0.25"/><circle cx="260" cy="190" r="40" fill="%237d8f7a" opacity="0.2"/><path d="M80 240 L320 240 L280 200 L120 200 L80 240" fill="%23c6a88b" opacity="0.3"/><text x="130" y="160" font-family="Outfit" font-size="22" fill="%234e453b" font-weight="300">Doventha</text></svg>');
+      background-size: cover;
+      background-position: center;
+    }
+    .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* article preview (unique card) */
+    .article-meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .article-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1.8rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border-light);
+      transition: 0.15s;
+      height: 100%;
+    }
+    .article-card h3 {
+      font-size: 1.35rem;
+      margin-top: 0.2rem;
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+    }
+    .article-card p {
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+    }
+    .article-card .read-more {
+      font-weight: 500;
+      margin-top: 0.6rem;
+      display: inline-block;
+    }
+
+    .featured-image {
+      margin: 1rem 0 1.4rem;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: #d7cdc0;
+      aspect-ratio: 16/9;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340"><rect width="600" height="340" fill="%23e2d6c8"/><circle cx="200" cy="140" r="90" fill="%23b45f3b" opacity="0.15"/><circle cx="450" cy="200" r="70" fill="%237d8f7a" opacity="0.15"/><rect x="80" y="230" width="440" height="40" rx="6" fill="%23c6a88b" opacity="0.2"/><text x="180" y="170" font-family="Outfit" font-size="34" fill="%234e453b" font-weight="300">featured</text></svg>');
+      background-size: cover;
+    }
+
+    .infographic-box {
+      background: var(--bg-accent);
+      border-radius: var(--radius-md);
+      padding: 1.8rem 2rem;
+      margin: 2rem 0;
+      border-left: 8px solid var(--brand-2);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.8rem 0;
+      background: var(--bg-surface);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+    th {
+      background: var(--bg-accent);
+      padding: 0.9rem 1.2rem;
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    td {
+      padding: 0.8rem 1.2rem;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    /* FAQ block */
+    .faq-item {
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .faq-item h4 {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .newsletter {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2.8rem;
+      text-align: center;
+      border: 1px solid var(--border-light);
+      margin: 3rem 0 1.5rem;
+    }
+    .newsletter input {
+      padding: 0.9rem 1.5rem;
+      border: 1px solid var(--border-light);
+      border-radius: 60px;
+      min-width: 240px;
+      background: var(--bg-body);
+      font-family: var(--font-body);
+    }
+    .newsletter button {
+      background: var(--brand-1);
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 0.4rem;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .newsletter button:hover { background: #9c4d2b; }
+
+    footer {
+      margin-top: 4rem;
+      padding: 2rem 0 1rem;
+      border-top: 1px solid var(--border-light);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    /* responsive */
+    @media (max-width: 820px) {
+      .grid-2col, .grid-3col { grid-template-columns: 1fr; }
+      .hero { flex-direction: column; padding: 2rem; }
+      .hero-image { width: 100%; aspect-ratio: 16/9; }
+      .site-header { flex-direction: column; gap: 0.8rem; align-items: flex-start; }
+      .nav-links { flex-wrap: wrap; gap: 1rem; }
+      h1 { font-size: 2.2rem; }
+      .section-title { font-size: 1.7rem; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0.8rem 0.2rem; }
+      .card { padding: 1.2rem; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-content">
-            <div class="logo">
-                <i class="fas fa-newspaper fa-2x"></i>
-                <h1>Zenith<span>Fact</span> Network</h1>
-            </div>
-            <nav>
-                <ul>
-                     <li><a href="index.html">Home</a></li>
+  <div class="container">
+
+    <!-- header -->
+    <header class="site-header">
+      <div class="logo">Doventha<span>·</span>Bake Workshop</div>
+      <div class="nav-links">
+       <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
-					<li><a href="privacy.html">Privacy Policy</a></li>
-					<li><a href="terms.html">Terms Of Service</a></li>
-                </ul>
-            </nav>
-        </div>
+                    <li><a href="terms.html">Terms Of Privacy</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+					<li><a href="cookies.html">Cookies Policy</a></li>
+      </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- hero (content-first) -->
     <section class="hero">
-        <div class="container hero-content">
-            <h2>News That Shapes Tomorrow</h2>
-            <p>World leaders gather to discuss urgent action plans as climate data shows accelerating changes to global ecosystems.</p>
-            <a href="#" class="btn">Read Full Story</a>
+      <div class="hero-content">
+        <h1>Baking as craft ·<br>Doventha workshop</h1>
+        <p>Master the art of artisan bread, pastry, and viennoiserie with our in-depth guides, step-by-step tutorials, and expert-led techniques. From sourdough to laminated dough — we build your baking intuition.</p>
+        <div class="hero-tags">
+          <span>sourdough</span>
+          <span>laminated dough</span>
+          <span>fermentation</span>
+          <span>scoring</span>
+          <span>croissant</span>
         </div>
+      </div>
+      <div class="hero-image" aria-label="hero image: artisan bread and pastry"></div>
     </section>
 
-    <!-- Featured News -->
-    <section class="container">
-        <h2 class="section-title">Featured Stories</h2>
-        <div class="featured">
-            <div class="main-story">
-                <img src="https://images.unsplash.com/photo-1569163139394-de44aa9a21dc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Tech Innovation">
-                <div class="story-content">
-                    <span class="category">Technology</span>
-                    <h3>Breakthrough in Quantum Computing Announced by Researchers</h3>
-                    <p>Scientists achieve quantum supremacy with new 128-qubit processor that could revolutionize computing...</p>
-                </div>
-            </div>
-            <div class="side-stories">
-                <div class="side-story">
-                    <img src="https://images.unsplash.com/photo-1581578021517-5d8ad8597852?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Economy">
-                    <div class="side-content">
-                        <h3>Global Markets Respond to New Economic Policies</h3>
-                        <div class="card-meta">
-                            <span><i class="far fa-clock"></i> 4 hours ago</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="side-story">
-                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d15?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Health">
-                    <div class="side-content">
-                        <h3>New Study Reveals Benefits of Mediterranean Diet</h3>
-                        <div class="card-meta">
-                            <span><i class="far fa-clock"></i> 6 hours ago</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="side-story">
-                    <img src="https://images.unsplash.com/photo-1460881680858-30d872d5b530?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Sports">
-                    <div class="side-content">
-                        <h3>Championship Finals Set After Dramatic Semifinals</h3>
-                        <div class="card-meta">
-                            <span><i class="far fa-clock"></i> 8 hours ago</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- featured articles -->
+    <div class="section-sub">featured</div>
+    <h2 class="section-title">Essential techniques</h2>
+    <div class="grid-2col">
+      <article class="article-card">
+        <div class="article-meta"><span>6 min read</span> <span>·</span> <span>advanced</span></div>
+        <h3>Autolyse & Fermentation: unlocking flavor</h3>
+        <div class="featured-image" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22><rect width=%22600%22 height=%22340%22 fill=%22%23e2d6c8%22/><circle cx=%22200%22 cy=%22140%22 r=%2290%22 fill=%22%23b45f3b%22 opacity=%220.15%22/><circle cx=%22450%22 cy=%22200%22 r=%2270%22 fill=%22%237d8f7a%22 opacity=%220.15%22/><text x=%22160%22 y=%22180%22 font-family=%22Outfit%22 font-size=%2232%22 fill=%22%234e453b%22 font-weight=%22300%22>featured article</text></svg>');"></div>
+        <p>Explore the science behind autolyse, bulk fermentation, and coil folds. A deep dive into gluten development and flavour complexity with practical timelines.</p>
+        <a href="#" class="read-more">Read more →</a>
+      </article>
+      <article class="article-card">
+        <div class="article-meta"><span>9 min read</span> <span>·</span> <span>intermediate</span></div>
+        <h3>Lamination masterclass: croissant & puff pastry</h3>
+        <div class="featured-image" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 340%22><rect width=%22600%22 height=%22340%22 fill=%22%23e2d6c8%22/><rect x=%22100%22 y=%22100%22 width=%22400%22 height=%22140%22 rx=%2210%22 fill=%22%23b45f3b%22 opacity=%220.1%22/><text x=%22160%22 y=%22180%22 font-family=%22Outfit%22 font-size=%2232%22 fill=%22%234e453b%22 font-weight=%22300%22>featured article</text></svg>');"></div>
+        <p>Butter blocks, détrempe, turns and resting — precise lamination for croissants, pain au chocolat and puff pastry. Troubleshooting common failures.</p>
+        <a href="#" class="read-more">Read more →</a>
+      </article>
+    </div>
 
-    <!-- Latest News -->
-    <section class="container">
-        <h2 class="section-title">Latest News</h2>
-        <div class="news-grid">
-            <div class="news-card">
-                <div class="card-img">
-                    <img src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Politics">
-                </div>
-                <div class="card-content">
-                    <span class="category">Politics</span>
-                    <h3>New Legislation Aims to Address Housing Crisis</h3>
-                    <p>Comprehensive bill proposes measures to increase affordable housing supply and provide rental assistance to low-income families...</p>
-                    <div class="card-meta">
-                        <span><i class="far fa-user"></i> Sarah Johnson</span>
-                        <span><i class="far fa-clock"></i> 2 hours ago</span>
-                    </div>
-                </div>
-            </div>
-            <div class="news-card">
-                <div class="card-img">
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Science">
-                </div>
-                <div class="card-content">
-                    <span class="category">Science</span>
-                    <h3>NASA Announces Discovery of Earth-like Planet</h3>
-                    <p>Astronomers identify exoplanet with similar size and temperature to Earth located in habitable zone of its star...</p>
-                    <div class="card-meta">
-                        <span><i class="far fa-user"></i> Michael Chen</span>
-                        <span><i class="far fa-clock"></i> 5 hours ago</span>
-                    </div>
-                </div>
-            </div>
-            <div class="news-card">
-                <div class="card-img">
-                    <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Health">
-                </div>
-                <div class="card-content">
-                    <span class="category">Health</span>
-                    <h3>Researchers Make Progress in Alzheimer's Treatment</h3>
-                    <p>New drug therapy shows promise in slowing cognitive decline in early-stage patients during clinical trials...</p>
-                    <div class="card-meta">
-                        <span><i class="far fa-user"></i> Dr. Emily Rodriguez</span>
-                        <span><i class="far fa-clock"></i> 7 hours ago</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- beginner guides + expert resources (2 col) -->
+    <div class="grid-2col" style="margin-top: 0.5rem;">
+      <div>
+        <h2 class="section-title" style="margin-top: 0.5rem;">Beginner guides</h2>
+        <div class="card-article"><h3>First sourdough starter</h3><p>Day-by-day guide to build a active starter. Hydration, feeding, and visual cues.</p><a href="#">Start here →</a></div>
+        <div class="card-article"><h3>Essential tools for home bakers</h3><p>Dutch oven, bench scraper, bannetons, and scoring knives — what really matters.</p><a href="#">Read →</a></div>
+        <div class="card-article"><h3>Understanding baker’s percentages</h3><p>Formulas and hydration made simple. Scale your recipes with confidence.</p><a href="#">Learn →</a></div>
+      </div>
+      <div>
+        <h2 class="section-title" style="margin-top: 0.5rem;">Expert resources</h2>
+        <div class="card-article"><h3>Enzyme activity in dough</h3><p>Amylase, protease, and the impact on crumb structure and shelf life.</p><a href="#">Deep dive →</a></div>
+        <div class="card-article"><h3>Steam injection & oven spring</h3><p>Professional techniques for hearth breads. Steam duration and temperature.</p><a href="#">Explore →</a></div>
+        <div class="card-article"><h3>Whole grain & ancient grains</h3><p>Spelt, einkorn, rye. Adjustments for hydration and fermentation.</p><a href="#">Insights →</a></div>
+      </div>
+    </div>
 
-    <!-- Technology Section -->
-    <section class="container">
-        <h2 class="section-title">Technology</h2>
-        <div class="news-grid">
-            <div class="news-card">
-                <div class="card-img">
-                    <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="AI Technology">
-                </div>
-                <div class="card-content">
-                    <span class="category">Artificial Intelligence</span>
-                    <h3>Ethical AI Framework Adopted by Major Tech Companies</h3>
-                    <p>Industry leaders commit to new standards for responsible AI development and deployment amid growing concerns about bias and privacy...</p>
-                    <div class="card-meta">
-                        <span><i class="far fa-user"></i> David Kim</span>
-                        <span><i class="far fa-clock"></i> 9 hours ago</span>
-                    </div>
-                </div>
-            </div>
-            <div class="news-card">
-                <div class="card-img">
-                    <img src="https://images.unsplash.com/photo-1603732551681-2e91159b9dc2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Cybersecurity">
-                </div>
-                <div class="card-content">
-                    <span class="category">Cybersecurity</span>
-                    <h3>Global Cybersecurity Initiative Launches to Combat Threats</h3>
-                    <p>International coalition forms to address rising sophisticated cyber attacks targeting critical infrastructure...</p>
-                    <div class="card-meta">
-                        <span><i class="far fa-user"></i> Angela White</span>
-                        <span><i class="far fa-clock"></i> 12 hours ago</span>
-                    </div>
-                </div>
-            </div>
-            <div class="news-card">
-                <div class="card-img">
-                    <img src="https://images.unsplash.com/photo-1581094288338-231b058b38b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Robotics">
-                </div>
-                <div class="card-content">
-                    <span class="category">Robotics</span>
-                    <h3>Advanced Humanoid Robots Enter Consumer Market</h3>
-                    <p>New generation of domestic robots capable of performing complex household tasks now available to early adopters...</p>
-                    <div class="card-meta">
-                        <span><i class="far fa-user"></i> Robert Takahashi</span>
-                        <span><i class="far fa-clock"></i> 1 day ago</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- popular categories & trending topics -->
+    <div class="grid-2col" style="margin-top: 1.2rem;">
+      <div>
+        <h2 class="section-title">Popular categories</h2>
+        <ul style="list-style: none; padding-left: 0; display: flex; flex-wrap: wrap; gap: 0.8rem 1.2rem;">
+          <li style="background: var(--bg-accent); padding: 0.4rem 1.2rem; border-radius: 40px;">Sourdough</li>
+          <li style="background: var(--bg-accent); padding: 0.4rem 1.2rem; border-radius: 40px;">Viennoiserie</li>
+          <li style="background: var(--bg-accent); padding: 0.4rem 1.2rem; border-radius: 40px;">Panettone</li>
+          <li style="background: var(--bg-accent); padding: 0.4rem 1.2rem; border-radius: 40px;">Baguette</li>
+          <li style="background: var(--bg-accent); padding: 0.4rem 1.2rem; border-radius: 40px;">Brioche</li>
+          <li style="background: var(--bg-accent); padding: 0.4rem 1.2rem; border-radius: 40px;">Gluten-free</li>
+        </ul>
+        <div style="margin-top: 1.8rem;"><img src="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 200%22><rect width=%22600%22 height=%22200%22 fill=%22%23ede6dc%22/><text x=%2220%22 y=%22120%22 font-family=%22Outfit%22 font-size=%2222%22 fill=%22%234e453b%22>category image · sourdough & grains</text></svg>" style="width:100%; border-radius: var(--radius-sm);"></div>
+      </div>
+      <div>
+        <h2 class="section-title">Trending topics</h2>
+        <div class="card" style="margin-bottom: 0.8rem;"><span style="font-weight: 600;">↳ High-hydration dough handling</span> <span style="color: var(--text-muted); font-size:0.9rem;"> (12 articles)</span></div>
+        <div class="card" style="margin-bottom: 0.8rem;"><span style="font-weight: 600;">↳ Cold fermentation strategies</span> <span style="color: var(--text-muted); font-size:0.9rem;"> (8 articles)</span></div>
+        <div class="card" style="margin-bottom: 0.8rem;"><span style="font-weight: 600;">↳ Using alt flours (chestnut, oat)</span> <span style="color: var(--text-muted); font-size:0.9rem;"> (6 articles)</span></div>
+        <div class="card"><span style="font-weight: 600;">↳ Scoring patterns & aesthetics</span> <span style="color: var(--text-muted); font-size:0.9rem;"> (9 articles)</span></div>
+      </div>
+    </div>
 
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <div class="container">
-            <h2>Stay Updated with ZenithFact Network</h2>
-            <p>Subscribe to our newsletter for daily news digests and exclusive content</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Enter your email address">
-                <button type="submit">Subscribe</button>
-            </form>
-        </div>
-    </section>
+    <!-- latest articles + in-depth tutorials -->
+    <h2 class="section-title">Latest articles</h2>
+    <div class="grid-3col">
+      <div class="article-card"><h3>Rye sourdough: from starter to loaf</h3><p>Full guide with hydration adjustments and fermentation times.</p><a href="#">Read</a></div>
+      <div class="article-card"><h3>Baking with preferments: poolish & biga</h3><p>Flavor and texture differences. Step-by-step comparison.</p><a href="#">Read</a></div>
+      <div class="article-card"><h3>Folding vs. kneading: which is better?</h3><p>Gluten development techniques for high-hydration dough.</p><a href="#">Read</a></div>
+    </div>
 
-    <!-- Footer -->
+    <!-- infographic + resource hub -->
+    <div class="infographic-box">
+      <h3 style="margin-top: 0;">📊 Infographic: Sourdough timeline</h3>
+      <p><strong>Day 1</strong> – mix flour/water · <strong>Day 2–3</strong> – feed every 12h · <strong>Day 4</strong> – starter doubles · <strong>Day 5</strong> – bake. Optimal temperature 24–26°C. Visual cues: bubbles, aroma, rise.</p>
+      <div style="background: #d9cfc0; padding: 0.8rem; border-radius: 40px; display: inline-block; font-size:0.9rem;">⬤ fermentation activity chart</div>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between; background: var(--bg-surface); padding: 1.8rem 2rem; border-radius: var(--radius-lg); margin: 1.8rem 0;">
+      <div><strong>Resource hub</strong> · calculators, glossary, conversion tables</div>
+      <div><span style="background: var(--bg-accent); padding: 0.2rem 1rem; border-radius: 40px;">hydration calculator</span> <span style="background: var(--bg-accent); padding: 0.2rem 1rem; border-radius: 40px;">baker’s math</span></div>
+    </div>
+
+    <!-- FAQ -->
+    <h2 class="section-title">Frequently asked questions</h2>
+    <div class="faq-item"><h4>How do I maintain my sourdough starter?</h4><p>Feed daily with equal parts flour and water (by weight). Store at room temperature or refrigerate for weekly feeding. Discard half before each feeding.</p></div>
+    <div class="faq-item"><h4>Why is my bread dense?</h4><p>Under-fermentation, weak gluten, or insufficient steam. Check bulk fermentation time and dough windowpane. Ensure oven is preheated thoroughly.</p></div>
+    <div class="faq-item"><h4>Can I bake without a Dutch oven?</h4><p>Yes, use a baking stone with a steam tray (ice cubes or water) at the bottom of the oven. Alternatively, use a heavy roasting pan covered with foil.</p></div>
+
+    <!-- newsletter -->
+    <div class="newsletter">
+      <h3 style="margin-bottom: 0.2rem;">The Doventha dispatch</h3>
+      <p style="margin-bottom: 1.2rem;">Weekly baking insights, recipes, and workshop news.</p>
+      <input type="email" placeholder="your email" aria-label="email"> <button>Subscribe</button>
+    </div>
+
+    <!-- footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>About ZenithFact Network</h3>
-                    <p>ZenithFact Network is a leading global news organization dedicated to delivering accurate, unbiased news coverage across all platforms. Our mission is to inform, educate, and empower our audience.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Advertise</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Information</h3>
-                    <ul class="contact-info">
-                        <li><i class="fas fa-map-marker-alt"></i> 123 News Avenue, Metro City, MC 10001</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-ZENITH (936484)</li>
-                        <li><i class="fas fa-envelope"></i> contact@zenithfact.com</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 ZenithFact Network. All rights reserved.</p>
-            </div>
-        </div>
+      <div>© 2026 Doventha Bake Workshop · content-first baking education</div>
+      <div style="display: flex; gap: 1.5rem;"><a href="#">About</a><a href="#">Contact</a><a href="#">Privacy</a></div>
     </footer>
+
+  </div> <!-- container -->
 </body>
 </html>

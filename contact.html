@@ -1,724 +1,486 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - ZenithFact Network</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Global Styles - Consistent with main site */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        :root {
-            --primary: #1a365d;
-            --secondary: #2d3748;
-            --accent: #4299e1;
-            --light: #e2e8f0;
-            --dark: #2d3748;
-            --text: #2d3748;
-            --text-light: #718096;
-        }
-        
-        body {
-            background-color: #f8f9fa;
-            color: var(--text);
-            line-height: 1.6;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        a {
-            text-decoration: none;
-            color: var(--accent);
-            transition: color 0.3s;
-        }
-        
-        a:hover {
-            color: var(--primary);
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo h1 {
-            font-size: 1.8rem;
-            margin-left: 10px;
-            font-weight: 700;
-        }
-        
-        .logo span {
-            color: var(--accent);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-        
-        nav ul li a {
-            color: white;
-            font-weight: 500;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-        
-        nav ul li a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--accent);
-            transition: width 0.3s;
-        }
-        
-        nav ul li a:hover:after {
-            width: 100%;
-        }
-        
-        /* Page Header */
-        .page-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .page-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .breadcrumb {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-        }
-        
-        .breadcrumb li {
-            margin: 0 0.5rem;
-        }
-        
-        .breadcrumb li:after {
-            content: '/';
-            margin-left: 1rem;
-            color: var(--light);
-        }
-        
-        .breadcrumb li:last-child:after {
-            content: '';
-            margin-left: 0;
-        }
-        
-        .breadcrumb a {
-            color: var(--light);
-        }
-        
-        .breadcrumb a:hover {
-            color: white;
-        }
-        
-        /* Contact Section */
-        .contact-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 4rem;
-        }
-        
-        .contact-info {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .contact-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        .contact-info h3:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-            bottom: 0;
-            left: 0;
-        }
-        
-        .contact-details {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        
-        .contact-details li {
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .contact-details i {
-            font-size: 1.2rem;
-            color: var(--accent);
-            margin-right: 1rem;
-            margin-top: 0.2rem;
-        }
-        
-        .contact-details div {
-            flex: 1;
-        }
-        
-        .contact-details h4 {
-            margin-bottom: 0.3rem;
-            color: var(--dark);
-        }
-        
-        .contact-details p {
-            color: var(--text-light);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: var(--light);
-            border-radius: 50%;
-            color: var(--primary);
-            transition: background 0.3s, transform 0.3s;
-        }
-        
-        .social-links a:hover {
-            background: var(--accent);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        .contact-form {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .contact-form h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        .contact-form h3:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-            bottom: 0;
-            left: 0;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--dark);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 5px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.3s;
-        }
-        
-        .btn:hover {
-            background: #3182ce;
-            transform: translateY(-2px);
-        }
-        
-        /* Map Section */
-        .map-section {
-            margin-bottom: 4rem;
-        }
-        
-        .map-section h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 2rem;
-            color: var(--primary);
-            position: relative;
-        }
-        
-        .map-section h2:after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 3px;
-            background: var(--accent);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .map-container {
-            height: 400px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        /* FAQ Section */
-        .faq-section {
-            margin-bottom: 4rem;
-        }
-        
-        .faq-section h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 2rem;
-            color: var(--primary);
-            position: relative;
-        }
-        
-        .faq-section h2:after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 3px;
-            background: var(--accent);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .faq-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .faq-item {
-            background: white;
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .faq-item h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        .faq-item p {
-            color: var(--text-light);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        .footer-section h3:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 2px;
-            background: var(--accent);
-            bottom: 0;
-            left: 0;
-        }
-        
-        .footer-section p {
-            margin-bottom: 1rem;
-            color: #cbd5e0;
-        }
-        
-        .contact-info {
-            list-style: none;
-        }
-        
-        .contact-info li {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .contact-info i {
-            margin-right: 10px;
-            color: var(--accent);
-        }
-        
-        .links {
-            list-style: none;
-        }
-        
-        .links li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .links a {
-            color: #cbd5e0;
-            transition: color 0.3s;
-        }
-        
-        .links a:hover {
-            color: var(--accent);
-        }
-        
-        .social-links-footer {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-links-footer a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: background 0.3s, transform 0.3s;
-        }
-        
-        .social-links-footer a:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #cbd5e0;
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            nav ul li {
-                margin: 0.5rem;
-            }
-            
-            .contact-section {
-                grid-template-columns: 1fr;
-            }
-            
-            .faq-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Doventha · contact & workshop</title>
+  <!-- google fonts (unique combination) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <style>
+    /* ----- global reset & variables (fresh palette) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-body: #f9f6f0;
+      --bg-surface: #ffffff;
+      --bg-accent: #ede6dc;
+      --text-primary: #221f1a;
+      --text-secondary: #3f3a32;
+      --text-muted: #6b6258;
+      --brand-1: #b45f3b;      /* warm terracotta */
+      --brand-2: #7d8f7a;      /* sage green */
+      --brand-3: #c6a88b;      /* sand beige */
+      --border-light: #e1d9d0;
+      --shadow-card: 0 12px 28px rgba(0,0,0,0.03), 0 4px 12px rgba(0,0,0,0.02);
+      --radius-lg: 28px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+      --font-body: 'Outfit', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Newsreader', Georgia, serif;
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 2rem;
+      --space-lg: 3.5rem;
+      --space-xl: 5rem;
+      --max-width: 1120px;
+    }
+
+    body {
+      background: var(--bg-body);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      padding: 0 1rem;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.8rem 0 3rem;
+    }
+
+    /* typography */
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-top: 0;
+    }
+
+    h1 { font-size: 2.8rem; font-weight: 600; }
+    h2 { font-size: 2.2rem; margin: 2.2rem 0 1.2rem; }
+    h3 { font-size: 1.5rem; margin: 1.8rem 0 0.8rem; font-weight: 500; }
+    p { margin-bottom: 1.2rem; color: var(--text-secondary); }
+
+    a {
+      color: var(--brand-1);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    a:hover { color: #9c4d2b; }
+
+    /* ----- header / navigation (clean, minimal) ----- */
+    .site-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0 1.8rem;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 2.2rem;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--brand-1); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 450;
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+    .nav-links a { color: var(--text-secondary); }
+    .nav-links a:hover { color: var(--brand-1); }
+
+    /* ----- cards & modules (unique style) ----- */
+    .card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem 2rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(225, 217, 208, 0.4);
+      transition: all 0.2s;
+    }
+
+    .card-article {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1.8rem;
+      border-left: 6px solid var(--brand-3);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 1.2rem;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .grid-3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 1.9rem;
+      margin: 2.8rem 0 1.2rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 3px solid var(--brand-3);
+      display: inline-block;
+    }
+
+    .section-sub {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+
+    /* hero (content-first, minimal image) */
+    .hero {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 2.8rem 3rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border-light);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .hero-content {
+      flex: 2;
+      min-width: 260px;
+    }
+    .hero-content h1 {
+      font-size: 2.9rem;
+      margin-bottom: 0.75rem;
+    }
+    .hero-content p {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      margin-top: 1.2rem;
+    }
+    .hero-tags span {
+      background: var(--bg-accent);
+      padding: 0.25rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .hero-image {
+      flex: 1;
+      min-width: 160px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #d9cfc0;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4e453b;
+      font-weight: 300;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300"><rect width="400" height="300" fill="%23e2d6c8"/><circle cx="200" cy="120" r="60" fill="%23b45f3b" opacity="0.25"/><circle cx="260" cy="190" r="40" fill="%237d8f7a" opacity="0.2"/><path d="M80 240 L320 240 L280 200 L120 200 L80 240" fill="%23c6a88b" opacity="0.3"/><text x="130" y="160" font-family="Outfit" font-size="22" fill="%234e453b" font-weight="300">Doventha</text></svg>');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* contact form specific */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      font-size: 0.95rem;
+      margin-bottom: 0.3rem;
+      color: var(--text-secondary);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      background: var(--bg-body);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      transition: 0.15s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--brand-1);
+      box-shadow: 0 0 0 3px rgba(180, 95, 59, 0.15);
+    }
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .btn-primary {
+      background: var(--brand-1);
+      border: none;
+      padding: 0.9rem 2.4rem;
+      border-radius: 60px;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.15s;
+      font-family: var(--font-body);
+    }
+    .btn-primary:hover {
+      background: #9c4d2b;
+    }
+
+    .contact-details {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.8rem;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-card);
+    }
+    .contact-details h3 {
+      margin-top: 0;
+      font-size: 1.6rem;
+    }
+    .contact-details p {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .contact-details .icon {
+      font-size: 1.3rem;
+      min-width: 1.8rem;
+    }
+
+    /* map placeholder */
+    .map-placeholder {
+      background: #d9cfc0;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      text-align: center;
+      color: #4e453b;
+      font-weight: 400;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><rect width="400" height="200" fill="%23d9cfc0"/><circle cx="200" cy="100" r="40" fill="%23b45f3b" opacity="0.25"/><text x="120" y="120" font-family="Outfit" font-size="20" fill="%234e453b">📍 workshop studio</text></svg>');
+      background-size: cover;
+      background-position: center;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* FAQ & footer */
+    .faq-item {
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .faq-item h4 {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .newsletter {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2.8rem;
+      text-align: center;
+      border: 1px solid var(--border-light);
+      margin: 3rem 0 1.5rem;
+    }
+    .newsletter input {
+      padding: 0.9rem 1.5rem;
+      border: 1px solid var(--border-light);
+      border-radius: 60px;
+      min-width: 240px;
+      background: var(--bg-body);
+      font-family: var(--font-body);
+    }
+    .newsletter button {
+      background: var(--brand-1);
+      border: none;
+      padding: 0.9rem 2rem;
+      border-radius: 60px;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 0.4rem;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .newsletter button:hover { background: #9c4d2b; }
+
+    footer {
+      margin-top: 4rem;
+      padding: 2rem 0 1rem;
+      border-top: 1px solid var(--border-light);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    /* responsive */
+    @media (max-width: 820px) {
+      .grid-2col, .grid-3col { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .hero { flex-direction: column; padding: 2rem; }
+      .hero-image { width: 100%; aspect-ratio: 16/9; }
+      .site-header { flex-direction: column; gap: 0.8rem; align-items: flex-start; }
+      .nav-links { flex-wrap: wrap; gap: 1rem; }
+      h1 { font-size: 2.2rem; }
+      .section-title { font-size: 1.7rem; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0.8rem 0.2rem; }
+      .card { padding: 1.2rem; }
+      .newsletter input { min-width: 160px; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-content">
-            <div class="logo">
-                <i class="fas fa-newspaper fa-2x"></i>
-                <h1>Zenith<span>Fact</span> Network</h1>
-            </div>
-            <nav>
-                <ul>
-                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-					<li><a href="privacy.html">Privacy Policy</a></li>
-					<li><a href="terms.html">Terms Of Service</a></li>
-                </ul>
-            </nav>
-        </div>
+  <div class="container">
+
+    <!-- header -->
+    <header class="site-header">
+      <div class="logo">Doventha<span>·</span>Bake Workshop</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" style="color: var(--brand-1); font-weight: 600;">Contact</a>
+        <a href="terms.html">Terms Of Privacy</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookies.html">Cookies Policy</a>
+      </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <ul class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li>Contact</li>
-            </ul>
+    <!-- hero (contact) -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Let’s bake together ·<br>get in touch</h1>
+        <p>Have a question about a recipe, technique, or our workshop? We’re here to help. Reach out for private baking classes, collaborations, or just to say hello.</p>
+        <div class="hero-tags">
+          <span>✉️ hello@doventha.com</span>
+          <span>📞 +1 (555) 202-6260</span>
+          <span>📍 42 Baker’s Lane, NYC</span>
         </div>
+      </div>
+      <div class="hero-image" aria-label="contact image: baking studio"></div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="container contact-section">
-        <div class="contact-info">
-            <h3>Get In Touch</h3>
-            <ul class="contact-details">
-                <li>
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                        <h4>Address</h4>
-                        <p>123 News Avenue, Metro City, MC 10001</p>
-                    </div>
-                </li>
-                <li>
-                    <i class="fas fa-phone"></i>
-                    <div>
-                        <h4>Phone</h4>
-                        <p>+1 (555) 123-ZENITH (936484)</p>
-                    </div>
-                </li>
-                <li>
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <h4>Email</h4>
-                        <p>contact@zenithfact.com</p>
-                    </div>
-                </li>
-                <li>
-                    <i class="fas fa-clock"></i>
-                    <div>
-                        <h4>Business Hours</h4>
-                        <p>Monday-Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM</p>
-                    </div>
-                </li>
-            </ul>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-        </div>
-        
-        <div class="contact-form">
-            <h3>Send Us a Message</h3>
-            <form id="contactForm">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" class="form-control" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" class="form-control" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <input type="text" id="subject" class="form-control" placeholder="Subject" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" class="form-control" placeholder="Your Message" required></textarea>
-                </div>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-        </div>
-    </section>
+    <!-- contact form + details -->
+    <div class="contact-grid">
+      <!-- form -->
+      <div class="card" style="padding: 2rem 2.2rem;">
+        <h2 style="margin-top: 0; font-size: 1.9rem;">Send a message</h2>
+        <p style="margin-bottom: 1.8rem;">We’ll reply within 24 hours — usually sooner.</p>
+        <form>
+          <div class="form-group">
+            <label for="name">Full name</label>
+            <input type="text" id="name" placeholder="e.g. Eleanor Baker" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" id="email" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject">
+              <option>Workshop inquiry</option>
+              <option>Recipe question</option>
+              <option>Collaboration</option>
+              <option>Feedback</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Tell us about your baking journey or question..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Send message →</button>
+        </form>
+      </div>
 
-    <!-- Map Section -->
-    <section class="container map-section">
-        <h2>Our Location</h2>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.621465758463!2d-74.0059423490355!3d40.72576984285925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259eb7d463c47%3A0x9e9b61b4d76b3c38!2s123%20News%20Ave%2C%20New%20York%2C%20NY%2010001!5e0!3m2!1sen!2sus!4v1654567890123!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+      <!-- contact details & workshop info -->
+      <div class="contact-details">
+        <h3>Workshop studio</h3>
+        <p><span class="icon">📍</span> 42 Baker’s Lane, Brooklyn, NY 11201</p>
+        <p><span class="icon">📞</span> +1 (555) 202-6260</p>
+        <p><span class="icon">✉️</span> hello@doventha.com</p>
+        <p><span class="icon">🕐</span> Mon–Sat · 9:00 – 18:00 EST</p>
+        <div style="margin: 1.5rem 0 0.5rem;">
+          <span style="background: var(--bg-accent); padding: 0.2rem 1.2rem; border-radius: 40px; font-size:0.85rem;">🧑‍🍳 private classes</span>
+          <span style="background: var(--bg-accent); padding: 0.2rem 1.2rem; border-radius: 40px; font-size:0.85rem; margin-left:0.4rem;">📦 sourdough starter kits</span>
         </div>
-    </section>
+        <div class="map-placeholder" aria-label="map location">📍 Doventha studio · Brooklyn</div>
+        <p style="margin-top: 1.2rem; font-size: 0.95rem;"><strong>👉 Weekend workshops:</strong> Every Saturday morning — join our intimate baking sessions. Max 8 participants.</p>
+      </div>
+    </div>
 
-    <!-- FAQ Section -->
-    <section class="container faq-section">
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq-grid">
-            <div class="faq-item">
-                <h3>How can I submit a news tip?</h3>
-                <p>You can submit news tips through our contact form, or email us directly at tips@zenithfact.com. All tips are kept confidential.</p>
-            </div>
-            <div class="faq-item">
-                <h3>How do I subscribe to your newsletter?</h3>
-                <p>Visit our homepage and scroll to the newsletter section at the bottom. Enter your email address and click subscribe.</p>
-            </div>
-            <div class="faq-item">
-                <h3>How can I advertise with ZenithFact?</h3>
-                <p>For advertising inquiries, please contact our advertising department at ads@zenithfact.com or call (555) 123-ADVERT.</p>
-            </div>
-            <div class="faq-item">
-                <h3>How do I report an error in a story?</h3>
-                <p>If you've spotted an error, please use our contact form and select "Correction Request" from the subject dropdown.</p>
-            </div>
-        </div>
-    </section>
+    <!-- FAQ (contact related) -->
+    <h2 class="section-title">Frequently asked questions</h2>
+    <div class="faq-item"><h4>Do you offer online baking classes?</h4><p>Yes! We host monthly virtual workshops on sourdough, viennoiserie, and panettone. Check our schedule or send us a message to get the next dates.</p></div>
+    <div class="faq-item"><h4>Can I visit the studio for a private consultation?</h4><p>Absolutely. We welcome bakers of all levels. Schedule a 1:1 session to troubleshoot your dough, learn shaping, or perfect your croissant lamination.</p></div>
+    <div class="faq-item"><h4>How do I order a sourdough starter kit?</h4><p>Send us an email with your location, and we’ll arrange shipping. Our kits include active starter, feeding schedule, and a small bag of organic flour.</p></div>
 
-    <!-- Footer -->
+    <!-- newsletter (consistent with brand) -->
+    <div class="newsletter">
+      <h3 style="margin-bottom: 0.2rem;">The Doventha dispatch</h3>
+      <p style="margin-bottom: 1.2rem;">Weekly baking insights, recipes, and workshop news.</p>
+      <input type="email" placeholder="your email" aria-label="email"> <button>Subscribe</button>
+    </div>
+
+    <!-- footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>About ZenithFact Network</h3>
-                    <p>ZenithFact Network is a leading global news organization dedicated to delivering accurate, unbiased news coverage across all platforms. Our mission is to inform, educate, and empower our audience.</p>
-                    <div class="social-links-footer">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Advertise</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Information</h3>
-                    <ul class="contact-info">
-                        <li><i class="fas fa-map-marker-alt"></i> 123 News Avenue, Metro City, MC 10001</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-ZENITH (936484)</li>
-                        <li><i class="fas fa-envelope"></i> contact@zenithfact.com</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 ZenithFact Network. All rights reserved.</p>
-            </div>
-        </div>
+      <div>© 2026 Doventha Bake Workshop · content-first baking education</div>
+      <div style="display: flex; gap: 1.5rem;"><a href="#">About</a><a href="contact.html">Contact</a><a href="#">Privacy</a></div>
     </footer>
 
-    <script>
-        // Simple form validation
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // Simple validation
-            if (name && email && subject && message) {
-                // In a real application, you would send this data to a server
-                alert('Thank you for your message! We will get back to you soon.');
-                this.reset();
-            } else {
-                alert('Please fill in all fields.');
-            }
-        });
-    </script>
+  </div> <!-- container -->
 </body>
 </html>

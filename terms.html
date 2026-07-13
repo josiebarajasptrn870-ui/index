@@ -1,491 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Service - ZenithFact Network</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Global Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        :root {
-            --primary: #1a365d;
-            --secondary: #2d3748;
-            --accent: #4299e1;
-            --light: #e2e8f0;
-            --dark: #2d3748;
-            --text: #2d3748;
-            --text-light: #718096;
-        }
-        
-        body {
-            background-color: #f8f9fa;
-            color: var(--text);
-            line-height: 1.6;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        a {
-            text-decoration: none;
-            color: var(--accent);
-            transition: color 0.3s;
-        }
-        
-        a:hover {
-            color: var(--primary);
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo h1 {
-            font-size: 1.8rem;
-            margin-left: 10px;
-            font-weight: 700;
-        }
-        
-        .logo span {
-            color: var(--accent);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-        
-        nav ul li a {
-            color: white;
-            font-weight: 500;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-        
-        nav ul li a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--accent);
-            transition: width 0.3s;
-        }
-        
-        nav ul li a:hover:after {
-            width: 100%;
-        }
-        
-        /* Page Header */
-        .page-header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .page-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .breadcrumb {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-        }
-        
-        .breadcrumb li {
-            margin: 0 0.5rem;
-        }
-        
-        .breadcrumb li:not(:last-child):after {
-            content: ">";
-            margin-left: 1rem;
-            color: var(--light);
-        }
-        
-        .breadcrumb a {
-            color: var(--light);
-        }
-        
-        .breadcrumb a:hover {
-            color: white;
-        }
-        
-        /* Terms Content */
-        .terms-content {
-            background: white;
-            border-radius: 10px;
-            padding: 3rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-bottom: 3rem;
-        }
-        
-        .terms-section {
-            margin-bottom: 2.5rem;
-        }
-        
-        .terms-section h2 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-        
-        .terms-section p {
-            margin-bottom: 1rem;
-            color: var(--text);
-        }
-        
-        .terms-section ul {
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .terms-section li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .highlight {
-            background-color: var(--light);
-            padding: 1.5rem;
-            border-left: 4px solid var(--accent);
-            margin: 1.5rem 0;
-            border-radius: 0 5px 5px 0;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        .footer-section h3:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 2px;
-            background: var(--accent);
-            bottom: 0;
-            left: 0;
-        }
-        
-        .footer-section p {
-            margin-bottom: 1rem;
-            color: #cbd5e0;
-        }
-        
-        .contact-info {
-            list-style: none;
-        }
-        
-        .contact-info li {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .contact-info i {
-            margin-right: 10px;
-            color: var(--accent);
-        }
-        
-        .links {
-            list-style: none;
-        }
-        
-        .links li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .links a {
-            color: #cbd5e0;
-            transition: color 0.3s;
-        }
-        
-        .links a:hover {
-            color: var(--accent);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: background 0.3s, transform 0.3s;
-        }
-        
-        .social-links a:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #cbd5e0;
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            nav ul li {
-                margin: 0.5rem;
-            }
-            
-            .terms-content {
-                padding: 1.5rem;
-            }
-            
-            .page-header h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>Terms of Service · Doventha bake workshop</title>
+  <!-- google fonts (unique combination) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet" />
+  <style>
+    /* ----- global reset & variables (fresh palette) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-body: #f9f6f0;
+      --bg-surface: #ffffff;
+      --bg-accent: #ede6dc;
+      --text-primary: #221f1a;
+      --text-secondary: #3f3a32;
+      --text-muted: #6b6258;
+      --brand-1: #b45f3b;      /* warm terracotta */
+      --brand-2: #7d8f7a;      /* sage green */
+      --brand-3: #c6a88b;      /* sand beige */
+      --border-light: #e1d9d0;
+      --shadow-card: 0 12px 28px rgba(0,0,0,0.03), 0 4px 12px rgba(0,0,0,0.02);
+      --radius-lg: 28px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+      --font-body: 'Outfit', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Newsreader', Georgia, serif;
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 2rem;
+      --space-lg: 3.5rem;
+      --space-xl: 5rem;
+      --max-width: 1120px;
+    }
+
+    body {
+      background: var(--bg-body);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      padding: 0 1rem;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.8rem 0 3rem;
+    }
+
+    /* typography */
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-top: 0;
+    }
+
+    h1 { font-size: 2.8rem; font-weight: 600; }
+    h2 { font-size: 2.2rem; margin: 2.2rem 0 1.2rem; }
+    h3 { font-size: 1.5rem; margin: 1.8rem 0 0.8rem; font-weight: 500; }
+    p { margin-bottom: 1.2rem; color: var(--text-secondary); }
+
+    a {
+      color: var(--brand-1);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    a:hover { color: #9c4d2b; }
+
+    /* ----- header / navigation (clean, minimal) ----- */
+    .site-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0 1.8rem;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 2.2rem;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--brand-1); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 450;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      flex-wrap: wrap;
+    }
+    .nav-links a { color: var(--text-secondary); }
+    .nav-links a:hover { color: var(--brand-1); }
+    .nav-links a.active {
+      color: var(--brand-1);
+      font-weight: 500;
+    }
+
+    /* cards & modules */
+    .card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem 2rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(225, 217, 208, 0.4);
+      transition: all 0.2s;
+    }
+
+    .card-article {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1.8rem;
+      border-left: 6px solid var(--brand-3);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 1.2rem;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 1.9rem;
+      margin: 2.8rem 0 1.2rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 3px solid var(--brand-3);
+      display: inline-block;
+    }
+
+    .section-sub {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+
+    /* terms hero */
+    .terms-hero {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 2.8rem 3rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border-light);
+    }
+    .terms-hero h1 {
+      font-size: 2.9rem;
+      margin-bottom: 0.75rem;
+    }
+    .terms-hero p {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 720px;
+    }
+    .terms-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 1.2rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .terms-block {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 1.8rem 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border-light);
+    }
+    .terms-block h3 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .terms-block h3 span {
+      background: var(--bg-accent);
+      border-radius: 40px;
+      padding: 0.1rem 0.8rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-weight: 400;
+    }
+
+    .terms-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .terms-list li {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      gap: 0.75rem;
+    }
+    .terms-list li:last-child {
+      border-bottom: 0;
+    }
+    .terms-list .num {
+      color: var(--brand-1);
+      font-weight: 600;
+      min-width: 2rem;
+    }
+
+    .highlight-box {
+      background: var(--bg-accent);
+      border-radius: var(--radius-md);
+      padding: 1.8rem 2rem;
+      border-left: 8px solid var(--brand-2);
+      margin: 2rem 0;
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding: 2rem 0 1rem;
+      border-top: 1px solid var(--border-light);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    /* responsive */
+    @media (max-width: 820px) {
+      .grid-2col { grid-template-columns: 1fr; }
+      .site-header { flex-direction: column; gap: 0.8rem; align-items: flex-start; }
+      .nav-links { gap: 1rem; }
+      h1 { font-size: 2.2rem; }
+      .section-title { font-size: 1.7rem; }
+      .terms-hero { padding: 2rem; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0.8rem 0.2rem; }
+      .card { padding: 1.2rem; }
+      .terms-block { padding: 1.2rem; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-content">
-            <div class="logo">
-                <i class="fas fa-newspaper fa-2x"></i>
-                <h1>Zenith<span>Fact</span> Network</h1>
-            </div>
-            <nav>
-                <ul>
-                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-					<li><a href="privacy.html">Privacy Policy</a></li>
-					<li><a href="terms.html">Terms Of Service</a></li>
-                </ul>
-            </nav>
-        </div>
+  <div class="container">
+
+    <!-- header (consistent with about & homepage) -->
+    <header class="site-header">
+      <div class="logo">Doventha<span>·</span>Bake Workshop</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="terms.html" class="active">Terms Of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookies.html">Cookies Policy</a>
+      </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1>Terms of Service</h1>
-            <ul class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li>Terms of Service</li>
-            </ul>
-        </div>
+    <!-- terms hero -->
+    <section class="terms-hero">
+      <h1>Terms of Service</h1>
+      <p>Welcome to Doventha Bake Workshop. These terms outline the rules and regulations for the use of our website, content, and services. By accessing this platform, you accept these terms in full.</p>
+      <div class="terms-meta">
+        <span>📅 Last updated: June 2026</span>
+        <span>⚖️ Version 2.3</span>
+        <span>📌 applicable to all users</span>
+      </div>
     </section>
 
-    <!-- Terms Content -->
-    <section class="container">
-        <div class="terms-content">
-            <div class="terms-section">
-                <h2>1. Acceptance of Terms</h2>
-                <p>By accessing and using ZenithFact Network ("we," "us," or "our"), you accept and agree to be bound by the terms and provisions of this agreement. All materials and services provided on our website are subject to these terms and conditions.</p>
-                <p>If you do not agree to abide by the above, please do not use our services or access our website.</p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>2. Use License</h2>
-                <p>Permission is granted to temporarily download one copy of the materials (information or software) on ZenithFact Network's website for personal, non-commercial transitory viewing only.</p>
-                <p>This is the grant of a license, not a transfer of title, and under this license you may not:</p>
-                <ul>
-                    <li>Modify or copy the materials;</li>
-                    <li>Use the materials for any commercial purpose or for any public display (commercial or non-commercial);</li>
-                    <li>Attempt to decompile or reverse engineer any software contained on ZenithFact Network's website;</li>
-                    <li>Remove any copyright or other proprietary notations from the materials; or</li>
-                    <li>Transfer the materials to another person or "mirror" the materials on any other server.</li>
-                </ul>
-                <p>This license shall automatically terminate if you violate any of these restrictions and may be terminated by ZenithFact Network at any time.</p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>3. User Accounts</h2>
-                <p>When you create an account with us, you must provide us with information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our service.</p>
-                <p>You are responsible for safeguarding the password that you use to access the service and for any activities or actions under your password.</p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>4. Intellectual Property</h2>
-                <p>The service and its original content, features, and functionality are and will remain the exclusive property of ZenithFact Network and its licensors. The service is protected by copyright, trademark, and other laws of both the United States and foreign countries.</p>
-                <p>Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of ZenithFact Network.</p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>5. User-Generated Content</h2>
-                <p>Our service allows you to post, link, store, share and otherwise make available certain information, text, graphics, videos, or other material. You are responsible for the content that you post to the service, including its legality, reliability, and appropriateness.</p>
-                <p>By posting content to the service, you grant us the right and license to use, modify, publicly perform, publicly display, reproduce, and distribute such content on and through the service.</p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>6. Links to Other Websites</h2>
-                <p>Our service may contain links to third-party websites or services that are not owned or controlled by ZenithFact Network.</p>
-                <p>ZenithFact Network has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites or services. You further acknowledge and agree that ZenithFact Network shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods, or services available on or through any such websites or services.</p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>7. Termination</h2>
-                <p>We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p>
-                <p>Upon termination, your right to use the service will immediately cease. If you wish to terminate your account, you may simply discontinue using the service.</p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>8. Limitation of Liability</h2>
-                <p>In no event shall ZenithFact Network, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from:</p>
-                <ul>
-                    <li>Your access to or use of or inability to access or use the service;</li>
-                    <li>Any conduct or content of any third party on the service;</li>
-                    <li>Any content obtained from the service; and</li>
-                    <li>Unauthorized access, use or alteration of your transmissions or content.</li>
-                </ul>
-            </div>
-            
-            <div class="terms-section">
-                <h2>9. Disclaimer</h2>
-                <p>Your use of the service is at your sole risk. The service is provided on an "AS IS" and "AS AVAILABLE" basis. The service is provided without warranties of any kind, whether express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, non-infringement or course of performance.</p>
-                <div class="highlight">
-                    <p>ZenithFact Network strives to provide accurate information but does not guarantee the completeness, reliability, or accuracy of any information on our website or through our service. News and information may change quickly, and we are not responsible for any errors or omissions in the content.</p>
-                </div>
-            </div>
-            
-            <div class="terms-section">
-                <h2>10. Governing Law</h2>
-                <p>These Terms shall be governed and construed in accordance with the laws of the United States, without regard to its conflict of law provisions.</p>
-                <p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect.</p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>11. Changes to Terms</h2>
-                <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
-                <p>By continuing to access or use our service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the service.</p>
-            </div>
-            
-            <div class="terms-section">
-                <h2>12. Contact Us</h2>
-                <p>If you have any questions about these Terms, please contact us at:</p>
-                <ul class="contact-info">
-                    <li><i class="fas fa-envelope"></i> legal@zenithfact.com</li>
-                    <li><i class="fas fa-phone"></i> +1 (555) 123-ZENITH (936484)</li>
-                    <li><i class="fas fa-map-marker-alt"></i> 123 News Avenue, Metro City, MC 10001</li>
-                </ul>
-                <p>Last updated: September 16, 2023</p>
-            </div>
-        </div>
-    </section>
+    <!-- main terms content -->
+    <div class="terms-block">
+      <h3>1. Acceptance of terms <span>general</span></h3>
+      <p>By using the Doventha Bake Workshop website (<strong>doventha.com</strong>) and any associated services, you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you must not use our platform. We reserve the right to update these terms at any time; continued use constitutes acceptance.</p>
+    </div>
 
-    <!-- Footer -->
+    <div class="terms-block">
+      <h3>2. Intellectual property & content</h3>
+      <p>All content on this website — including but not limited to recipes, articles, videos, graphics, and educational materials — is the intellectual property of Doventha Bake Workshop unless otherwise stated. You may not reproduce, distribute, or create derivative works without prior written consent.</p>
+      <ul class="terms-list">
+        <li><span class="num">•</span> <strong>Personal use:</strong> You may view, download, and print content for personal, non-commercial use.</li>
+        <li><span class="num">•</span> <strong>Commercial use:</strong> Any commercial use, including reselling or republishing, is strictly prohibited.</li>
+        <li><span class="num">•</span> <strong>Attribution:</strong> If you share our content socially, please credit Doventha Bake Workshop.</li>
+      </ul>
+    </div>
+
+    <div class="terms-block">
+      <h3>3. User accounts & community guidelines</h3>
+      <p>Access to certain features (e.g., forums, premium workshops) may require creating an account. You are responsible for maintaining the confidentiality of your account credentials.</p>
+      <ul class="terms-list">
+        <li><span class="num">•</span> You agree to provide accurate and current information during registration.</li>
+        <li><span class="num">•</span> You are solely responsible for all activity that occurs under your account.</li>
+        <li><span class="num">•</span> Our community is built on respect; hate speech, harassment, or spam will result in immediate suspension.</li>
+      </ul>
+    </div>
+
+    <div class="terms-block">
+      <h3>4. Workshops, payments & refunds</h3>
+      <p>We offer both free and paid workshops. By registering for a paid workshop, you agree to the payment terms specified at checkout.</p>
+      <ul class="terms-list">
+        <li><span class="num">•</span> All prices are listed in GBP (£) and include VAT where applicable.</li>
+        <li><span class="num">•</span> Refunds are available within 14 days of purchase for self-paced workshops, provided you have not accessed more than 25% of the content.</li>
+        <li><span class="num">•</span> Live workshops are non-refundable but can be transferred to a future session with at least 7 days' notice.</li>
+      </ul>
+    </div>
+
+    <div class="terms-block">
+      <h3>5. Acceptable use</h3>
+      <p>You agree to use our website and services only for lawful purposes and in a way that does not infringe the rights of others or restrict anyone's use of the platform.</p>
+      <ul class="terms-list">
+        <li><span class="num">•</span> No uploading of malicious code, viruses, or harmful content.</li>
+        <li><span class="num">•</span> No scraping, data mining, or automated access without explicit permission.</li>
+        <li><span class="num">•</span> No impersonation of Doventha staff or other community members.</li>
+      </ul>
+    </div>
+
+    <div class="terms-block">
+      <h3>6. Third-party links & services</h3>
+      <p>Our website may contain links to external sites or services (e.g., payment processors, video hosting). We are not responsible for the privacy practices or content of these third parties. We encourage you to review their terms before engaging.</p>
+    </div>
+
+    <div class="terms-block">
+      <h3>7. Disclaimers & limitation of liability</h3>
+      <p>Doventha Bake Workshop provides educational content in good faith. However, we do not guarantee that:</p>
+      <ul class="terms-list">
+        <li><span class="num">•</span> All recipes will yield identical results (oven performance, ingredient variations, etc.).</li>
+        <li><span class="num">•</span> The website will be uninterrupted or error-free.</li>
+        <li><span class="num">•</span> Any advice or guidance is suitable for your specific dietary or health needs.</li>
+      </ul>
+      <p>To the fullest extent permitted by law, Doventha Bake Workshop is not liable for any indirect, incidental, or consequential damages arising from your use of our services.</p>
+    </div>
+
+    <div class="terms-block">
+      <h3>8. Governing law</h3>
+      <p>These terms are governed by and construed in accordance with the laws of England and Wales. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of the courts of England.</p>
+    </div>
+
+    <div class="terms-block">
+      <h3>9. Termination</h3>
+      <p>We reserve the right to terminate or suspend your access to our services at our sole discretion, without notice, for conduct that we believe violates these terms or is harmful to other users, us, or third parties.</p>
+    </div>
+
+    <!-- highlight: contact for questions -->
+    <div class="highlight-box">
+      <h3 style="margin-top: 0; font-size: 1.5rem;">❓ Questions about these terms?</h3>
+      <p style="margin-bottom: 0.5rem;">We're happy to clarify any part of our Terms of Service. Reach out to our team:</p>
+      <p style="font-weight: 500; margin-bottom: 0;">📧 <a href="mailto:legal@doventha.com">legal@doventha.com</a> &nbsp;·&nbsp; 📬 Doventha Bake Workshop, 12 Flour Lane, London, UK</p>
+    </div>
+
+    <!-- newsletter (consistent) -->
+    <div class="newsletter" style="background: var(--bg-surface); border-radius: var(--radius-lg); padding: 2.5rem 2.8rem; text-align: center; border: 1px solid var(--border-light); margin: 3rem 0 1.5rem;">
+      <h3 style="margin-bottom: 0.2rem;">The Doventha dispatch</h3>
+      <p style="margin-bottom: 1.2rem;">Weekly baking insights, recipes, and workshop news.</p>
+      <input type="email" placeholder="your email" aria-label="email" style="padding: 0.9rem 1.5rem; border: 1px solid var(--border-light); border-radius: 60px; min-width: 240px; background: var(--bg-body); font-family: var(--font-body);" />
+      <button style="background: var(--brand-1); border: none; padding: 0.9rem 2rem; border-radius: 60px; color: white; font-weight: 600; font-size: 1rem; margin-left: 0.4rem; cursor: pointer; transition: 0.15s;">Subscribe</button>
+    </div>
+
+    <!-- footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>About ZenithFact Network</h3>
-                    <p>ZenithFact Network is a leading global news organization dedicated to delivering accurate, unbiased news coverage across all platforms. Our mission is to inform, educate, and empower our audience.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Advertise</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Information</h3>
-                    <ul class="contact-info">
-                        <li><i class="fas fa-map-marker-alt"></i> 123 News Avenue, Metro City, MC 10001</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-ZENITH (936484)</li>
-                        <li><i class="fas fa-envelope"></i> contact@zenithfact.com</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 ZenithFact Network. All rights reserved.</p>
-            </div>
-        </div>
+      <div>© 2026 Doventha Bake Workshop · content-first baking education</div>
+      <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
     </footer>
+
+  </div> <!-- container -->
 </body>
 </html>

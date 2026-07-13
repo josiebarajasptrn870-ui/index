@@ -1,809 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - ZenithFact Network</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Global Styles - Consistent with homepage */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        :root {
-            --primary: #1a365d;
-            --secondary: #2d3748;
-            --accent: #4299e1;
-            --light: #e2e8f0;
-            --dark: #2d3748;
-            --text: #2d3748;
-            --text-light: #718096;
-        }
-        
-        body {
-            background-color: #f8f9fa;
-            color: var(--text);
-            line-height: 1.6;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        a {
-            text-decoration: none;
-            color: var(--accent);
-            transition: color 0.3s;
-        }
-        
-        a:hover {
-            color: var(--primary);
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo h1 {
-            font-size: 1.8rem;
-            margin-left: 10px;
-            font-weight: 700;
-        }
-        
-        .logo span {
-            color: var(--accent);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-        
-        nav ul li a {
-            color: white;
-            font-weight: 500;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-        
-        nav ul li a:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--accent);
-            transition: width 0.3s;
-        }
-        
-        nav ul li a:hover:after {
-            width: 100%;
-        }
-        
-        /* Page Header */
-        .page-header {
-            background: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            position: relative;
-            text-align: center;
-        }
-        
-        .page-header:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-        }
-        
-        .page-header-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .page-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .breadcrumb {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-        }
-        
-        .breadcrumb li {
-            margin: 0 0.5rem;
-        }
-        
-        .breadcrumb li:after {
-            content: '/';
-            margin-left: 1rem;
-            color: var(--light);
-        }
-        
-        .breadcrumb li:last-child:after {
-            content: '';
-            margin-left: 0;
-        }
-        
-        .breadcrumb a {
-            color: var(--light);
-        }
-        
-        .breadcrumb a:hover {
-            color: white;
-        }
-        
-        /* About Content */
-        .about-content {
-            padding: 4rem 0;
-        }
-        
-        .about-intro {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 4rem;
-            align-items: center;
-        }
-        
-        .about-text h2 {
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-        
-        .about-text h2:after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 3px;
-            background: var(--accent);
-            bottom: -10px;
-            left: 0;
-        }
-        
-        .about-text p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            color: var(--text);
-        }
-        
-        .about-image {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Mission Section */
-        .mission-section {
-            background: var(--light);
-            padding: 4rem 0;
-            margin: 4rem 0;
-        }
-        
-        .mission-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .mission-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        
-        .mission-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .mission-icon {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-        }
-        
-        .mission-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-        
-        /* Team Section */
-        .team-section {
-            margin: 4rem 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin: 3rem 0 2rem;
-            font-size: 2rem;
-            color: var(--primary);
-            position: relative;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 3px;
-            background: var(--accent);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .team-member {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .team-member:hover {
-            transform: translateY(-5px);
-        }
-        
-        .team-img {
-            height: 250px;
-            overflow: hidden;
-        }
-        
-        .team-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .team-member:hover .team-img img {
-            transform: scale(1.05);
-        }
-        
-        .team-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-        
-        .team-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        
-        .team-info p {
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-        
-        .team-social {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-        
-        .team-social a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 35px;
-            height: 35px;
-            background: var(--light);
-            border-radius: 50%;
-            color: var(--dark);
-            transition: background 0.3s, color 0.3s;
-        }
-        
-        .team-social a:hover {
-            background: var(--accent);
-            color: white;
-        }
-        
-        /* Values Section */
-        .values-section {
-            margin: 4rem 0;
-        }
-        
-        .values-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .value-item {
-            display: flex;
-            gap: 1.5rem;
-        }
-        
-        .value-icon {
-            font-size: 2rem;
-            color: var(--accent);
-            flex-shrink: 0;
-        }
-        
-        .value-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: var(--primary);
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
-            border-radius: 10px;
-            margin: 4rem 0;
-        }
-        
-        .cta-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .cta-section p {
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            font-size: 1.1rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background 0.3s, transform 0.3s;
-        }
-        
-        .btn:hover {
-            background: #3182ce;
-            transform: translateY(-2px);
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        .footer-section h3:after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 2px;
-            background: var(--accent);
-            bottom: 0;
-            left: 0;
-        }
-        
-        .footer-section p {
-            margin-bottom: 1rem;
-            color: #cbd5e0;
-        }
-        
-        .contact-info {
-            list-style: none;
-        }
-        
-        .contact-info li {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .contact-info i {
-            margin-right: 10px;
-            color: var(--accent);
-        }
-        
-        .links {
-            list-style: none;
-        }
-        
-        .links li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .links a {
-            color: #cbd5e0;
-            transition: color 0.3s;
-        }
-        
-        .links a:hover {
-            color: var(--accent);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: white;
-            transition: background 0.3s, transform 0.3s;
-        }
-        
-        .social-links a:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #cbd5e0;
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            nav ul {
-                margin-top: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            nav ul li {
-                margin: 0.5rem;
-            }
-            
-            .page-header {
-                height: 250px;
-            }
-            
-            .page-header h2 {
-                font-size: 2rem;
-            }
-            
-            .about-intro {
-                grid-template-columns: 1fr;
-            }
-            
-            .mission-grid, .team-grid, .values-list {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>About · Doventha bake workshop</title>
+  <!-- google fonts (unique combination) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+  <style>
+    /* ----- global reset & variables (fresh palette) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-body: #f9f6f0;
+      --bg-surface: #ffffff;
+      --bg-accent: #ede6dc;
+      --text-primary: #221f1a;
+      --text-secondary: #3f3a32;
+      --text-muted: #6b6258;
+      --brand-1: #b45f3b;      /* warm terracotta */
+      --brand-2: #7d8f7a;      /* sage green */
+      --brand-3: #c6a88b;      /* sand beige */
+      --border-light: #e1d9d0;
+      --shadow-card: 0 12px 28px rgba(0,0,0,0.03), 0 4px 12px rgba(0,0,0,0.02);
+      --radius-lg: 28px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+      --font-body: 'Outfit', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Newsreader', Georgia, serif;
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 2rem;
+      --space-lg: 3.5rem;
+      --space-xl: 5rem;
+      --max-width: 1120px;
+    }
+
+    body {
+      background: var(--bg-body);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      padding: 0 1rem;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.8rem 0 3rem;
+    }
+
+    /* typography */
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-top: 0;
+    }
+
+    h1 { font-size: 2.8rem; font-weight: 600; }
+    h2 { font-size: 2.2rem; margin: 2.2rem 0 1.2rem; }
+    h3 { font-size: 1.5rem; margin: 1.8rem 0 0.8rem; font-weight: 500; }
+    p { margin-bottom: 1.2rem; color: var(--text-secondary); }
+
+    a {
+      color: var(--brand-1);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    a:hover { color: #9c4d2b; }
+
+    /* ----- header / navigation (clean, minimal) ----- */
+    .site-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0 1.8rem;
+      border-bottom: 1px solid var(--border-light);
+      margin-bottom: 2.2rem;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+    .logo span { color: var(--brand-1); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 450;
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+    .nav-links a { color: var(--text-secondary); }
+    .nav-links a:hover { color: var(--brand-1); }
+
+    /* cards & modules */
+    .card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem 2rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(225, 217, 208, 0.4);
+      transition: all 0.2s;
+    }
+
+    .card-article {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 1.8rem;
+      border-left: 6px solid var(--brand-3);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 1.2rem;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .grid-3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 1.9rem;
+      margin: 2.8rem 0 1.2rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 3px solid var(--brand-3);
+      display: inline-block;
+    }
+
+    .section-sub {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+
+    /* hero about (content-first) */
+    .hero-about {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      padding: 2.8rem 3rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border-light);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .hero-content {
+      flex: 2;
+      min-width: 260px;
+    }
+    .hero-content h1 {
+      font-size: 2.9rem;
+      margin-bottom: 0.75rem;
+    }
+    .hero-content p {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      margin-top: 1.2rem;
+    }
+    .hero-tags span {
+      background: var(--bg-accent);
+      padding: 0.25rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .hero-image {
+      flex: 1;
+      min-width: 160px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #d9cfc0;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4e453b;
+      font-weight: 300;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300"><rect width="400" height="300" fill="%23e2d6c8"/><circle cx="200" cy="120" r="60" fill="%23b45f3b" opacity="0.2"/><circle cx="280" cy="190" r="45" fill="%237d8f7a" opacity="0.2"/><path d="M80 240 L320 240 L280 200 L120 200 L80 240" fill="%23c6a88b" opacity="0.3"/><text x="130" y="170" font-family="Outfit" font-size="22" fill="%234e453b" font-weight="300">about us</text></svg>');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* team cards */
+    .team-card {
+      background: var(--bg-surface);
+      border-radius: var(--radius-md);
+      padding: 1.8rem 1.8rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border-light);
+      text-align: center;
+      height: 100%;
+    }
+    .team-card .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--bg-accent);
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      color: var(--brand-1);
+      background-image: radial-gradient(circle at 30% 30%, #e8ddd0, #d1c3b4);
+    }
+    .team-card h3 { margin-top: 0.2rem; font-size: 1.3rem; }
+    .team-card .role { font-weight: 500; color: var(--brand-1); font-size: 0.9rem; letter-spacing: 0.02em; }
+
+    .infographic-box {
+      background: var(--bg-accent);
+      border-radius: var(--radius-md);
+      padding: 1.8rem 2rem;
+      margin: 2rem 0;
+      border-left: 8px solid var(--brand-2);
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding: 2rem 0 1rem;
+      border-top: 1px solid var(--border-light);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    /* responsive */
+    @media (max-width: 820px) {
+      .grid-2col, .grid-3col { grid-template-columns: 1fr; }
+      .hero-about { flex-direction: column; padding: 2rem; }
+      .hero-image { width: 100%; aspect-ratio: 16/9; }
+      .site-header { flex-direction: column; gap: 0.8rem; align-items: flex-start; }
+      .nav-links { flex-wrap: wrap; gap: 1rem; }
+      h1 { font-size: 2.2rem; }
+      .section-title { font-size: 1.7rem; }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0.8rem 0.2rem; }
+      .card { padding: 1.2rem; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-content">
-            <div class="logo">
-                <i class="fas fa-newspaper fa-2x"></i>
-                <h1>Zenith<span>Fact</span> Network</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-					<li><a href="privacy.html">Privacy Policy</a></li>
-					<li><a href="terms.html">Terms Of Service</a></li>
-                </ul>
-            </nav>
-        </div>
+  <div class="container">
+
+    <!-- header (same as homepage) -->
+    <header class="site-header">
+      <div class="logo">Doventha<span>·</span>Bake Workshop</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html" style="color: var(--brand-1); font-weight: 500;">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="terms.html">Terms Of Privacy</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookies.html">Cookies Policy</a>
+      </div>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container page-header-content">
-            <h2>About ZenithFact Network</h2>
-            <ul class="breadcrumb">
-                <li><a href="index.html">Home</a></li>
-                <li>About Us</li>
-            </ul>
+    <!-- about hero -->
+    <section class="hero-about">
+      <div class="hero-content">
+        <h1>Where baking becomes<br>craft & community</h1>
+        <p>Doventha was born from a simple belief: great bread is the intersection of science, patience, and intuition. We are a workshop and knowledge hub dedicated to artisan baking — from sourdough to viennoiserie, every technique is taught with depth and warmth.</p>
+        <div class="hero-tags">
+          <span>since 2020</span>
+          <span>artisan</span>
+          <span>education</span>
+          <span>community</span>
         </div>
+      </div>
+      <div class="hero-image" aria-label="about image: baking community"></div>
     </section>
 
-    <!-- About Content -->
-    <section class="about-content">
-        <div class="container">
-            <div class="about-intro">
-                <div class="about-text">
-                    <h2>Our Story</h2>
-                    <p>ZenithFact Network was founded in 2005 with a simple mission: to deliver accurate, unbiased news in a world increasingly filled with misinformation. What began as a small print publication has grown into a global multimedia news organization with bureaus in 12 countries and a digital reach that spans the globe.</p>
-                    <p>Our name reflects our commitment to reaching the highest point of factual reporting. "Zenith" represents the peak or highest point, and "Fact" signifies our unwavering dedication to truth and accuracy in journalism.</p>
-                    <p>Today, we continue to uphold the principles that guided our founders: integrity, accuracy, and a commitment to serving the public good through quality journalism.</p>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Newsroom">
-                </div>
-            </div>
+    <!-- our story -->
+    <div class="grid-2col" style="margin: 2rem 0 1rem;">
+      <div>
+        <h2 class="section-title" style="margin-top: 0;">Our story</h2>
+        <p style="font-size: 1.05rem;">Founded in 2020 by a collective of bakers and food scientists, Doventha began as a small workshop in a converted storefront. We quickly realized that the baking world lacked accessible, in-depth resources that respected both tradition and innovation. Today, we serve thousands of bakers worldwide — from home enthusiasts to professional pastry chefs.</p>
+        <p>Our methodology combines time-honored techniques with modern food science, giving you the "why" behind every step. We believe that understanding fermentation, gluten, and heat transforms baking from a recipe-following exercise into a true craft.</p>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom: 1.2rem;">
+          <h3 style="margin-top: 0;">📖 Our philosophy</h3>
+          <p><strong>Content-first, skill-focused.</strong> Every guide, video, and workshop is built around core principles: ingredient quality, temperature control, and fermentation intelligence. We don't just give recipes — we give you the intuition to create your own.</p>
         </div>
-
-        <!-- Mission Section -->
-        <div class="mission-section">
-            <div class="container">
-                <h2 class="section-title">Our Mission & Vision</h2>
-                <div class="mission-grid">
-                    <div class="mission-card">
-                        <div class="mission-icon">
-                            <i class="fas fa-bullseye"></i>
-                        </div>
-                        <h3>Our Mission</h3>
-                        <p>To inform, educate, and empower our global audience through accurate, unbiased, and comprehensive news coverage that holds power to account and gives voice to the voiceless.</p>
-                    </div>
-                    <div class="mission-card">
-                        <div class="mission-icon">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                        <h3>Our Vision</h3>
-                        <p>To create a better-informed world where citizens have access to truthful information that enables them to make decisions that improve their lives and communities.</p>
-                    </div>
-                    <div class="mission-card">
-                        <div class="mission-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h3>Our Promise</h3>
-                        <p>To uphold the highest standards of journalistic integrity, ensuring that every story we publish is thoroughly researched, fact-checked, and presented with context and fairness.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="card">
+          <h3 style="margin-top: 0;">🌾 Community & collaboration</h3>
+          <p>We host monthly sourdough clinics, Q&A sessions, and collaborative bakes. Our online forum is a space for troubleshooting, sharing successes, and learning from fellow bakers across the globe.</p>
         </div>
+      </div>
+    </div>
 
-        <!-- Team Section -->
-        <div class="container">
-            <div class="team-section">
-                <h2 class="section-title">Our Leadership Team</h2>
-                <div class="team-grid">
-                    <div class="team-member">
-                        <div class="team-img">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Editor-in-Chief">
-                        </div>
-                        <div class="team-info">
-                            <h3>Sarah Johnson</h3>
-                            <p>Editor-in-Chief</p>
-                            <div class="team-social">
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-member">
-                        <div class="team-img">
-                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Managing Editor">
-                        </div>
-                        <div class="team-info">
-                            <h3>Michael Chen</h3>
-                            <p>Managing Editor</p>
-                            <div class="team-social">
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-member">
-                        <div class="team-img">
-                            <img src="https://images.unsplash.com/photo-1614289371518-722f2615943d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Director of News">
-                        </div>
-                        <div class="team-info">
-                            <h3>Angela White</h3>
-                            <p>Director of News</p>
-                            <div class="team-social">
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="team-member">
-                        <div class="team-img">
-                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="CTO">
-                        </div>
-                        <div class="team-info">
-                            <h3>David Kim</h3>
-                            <p>Chief Technology Officer</p>
-                            <div class="team-social">
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a href="#"><i class="fas fa-envelope"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- meet the team -->
+    <h2 class="section-title">Meet the team</h2>
+    <div class="grid-3col">
+      <div class="team-card">
+        <div class="avatar">👩‍🍳</div>
+        <h3>Elena Marchetti</h3>
+        <div class="role">Head baker & educator</div>
+        <p style="font-size:0.95rem; margin-top:0.6rem;">20 years in artisan bakeries. Specializes in sourdough, panettone, and fermentation science.</p>
+      </div>
+      <div class="team-card">
+        <div class="avatar">🧑‍🔬</div>
+        <h3>Dr. James Chen</h3>
+        <div class="role">Food scientist</div>
+        <p style="font-size:0.95rem; margin-top:0.6rem;">PhD in cereal chemistry. Our resident expert in enzyme activity, starch retrogradation, and gluten structure.</p>
+      </div>
+      <div class="team-card">
+        <div class="avatar">🥖</div>
+        <h3>Marcus Vogel</h3>
+        <div class="role">Pastry & viennoiserie lead</div>
+        <p style="font-size:0.95rem; margin-top:0.6rem;">Trained in Paris and Vienna. Lamination, croissants, and Danish pastry are his passion.</p>
+      </div>
+    </div>
 
-            <!-- Values Section -->
-            <div class="values-section">
-                <h2 class="section-title">Our Core Values</h2>
-                <div class="values-list">
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="fas fa-check-double"></i>
-                        </div>
-                        <div class="value-content">
-                            <h3>Accuracy</h3>
-                            <p>We prioritize factual correctness in every story, employing a multi-layered fact-checking process to ensure the information we deliver is reliable and trustworthy.</p>
-                        </div>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="fas fa-balance-scale"></i>
-                        </div>
-                        <div class="value-content">
-                            <h3>Impartiality</h3>
-                            <p>We present news without bias, providing balanced coverage that allows our audience to form their own opinions based on facts and diverse perspectives.</p>
-                        </div>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <div class="value-content">
-                            <h3>Integrity</h3>
-                            <p>We maintain the highest ethical standards, acknowledging errors when they occur and being transparent about our sources and methods.</p>
-                        </div>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="value-content">
-                            <h3>Accountability</h3>
-                            <p>We hold powerful institutions and individuals to account, serving as a watchdog in the public interest and giving voice to those without power.</p>
-                        </div>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <div class="value-content">
-                            <h3>Innovation</h3>
-                            <p>We embrace new technologies and storytelling methods to better serve our audience while maintaining our commitment to journalistic excellence.</p>
-                        </div>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <div class="value-content">
-                            <h3>Diversity</h3>
-                            <p>We strive to represent the diverse communities we serve, ensuring our coverage includes a wide range of perspectives and experiences.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- what we offer + infographic -->
+    <div class="grid-2col" style="margin-top: 2.5rem;">
+      <div>
+        <h2 class="section-title" style="margin-top: 0;">What we offer</h2>
+        <ul style="list-style: none; padding-left: 0; font-size:1.05rem;">
+          <li style="padding: 0.6rem 0; border-bottom: 1px solid var(--border-light);">▸ In-depth tutorials & step-by-step guides</li>
+          <li style="padding: 0.6rem 0; border-bottom: 1px solid var(--border-light);">▸ Live virtual workshops & Q&A sessions</li>
+          <li style="padding: 0.6rem 0; border-bottom: 1px solid var(--border-light);">▸ Baker’s math calculators & conversion tools</li>
+          <li style="padding: 0.6rem 0; border-bottom: 1px solid var(--border-light);">▸ Community forum & troubleshooting</li>
+          <li style="padding: 0.6rem 0;">▸ Seasonal recipes & grain spotlights</li>
+        </ul>
+      </div>
+      <div>
+        <div class="infographic-box" style="margin-top: 0.5rem;">
+          <h3 style="margin-top: 0;">📊 At a glance</h3>
+          <p><strong>Workshops held:</strong> 120+ (live & recorded)</p>
+          <p><strong>Community members:</strong> 8,400+</p>
+          <p><strong>Recipes developed:</strong> 240+</p>
+          <p><strong>Grain types explored:</strong> 18 (from einkorn to rye)</p>
+          <div style="background: #d9cfc0; padding: 0.6rem 1.2rem; border-radius: 40px; display: inline-block; font-size:0.9rem;">⬤ continuous learning</div>
         </div>
+      </div>
+    </div>
 
-        <!-- CTA Section -->
-        <div class="container">
-            <div class="cta-section">
-                <h2>Join Our Mission for Truthful Journalism</h2>
-                <p>Support our work by subscribing to our premium content or contributing to our independent journalism fund.</p>
-                <a href="#" class="btn">Support Our Work</a>
-            </div>
-        </div>
-    </section>
+    <!-- values / approach -->
+    <div style="background: var(--bg-surface); border-radius: var(--radius-lg); padding: 2rem 2.5rem; border: 1px solid var(--border-light); margin: 2rem 0;">
+      <h2 style="font-family: var(--font-heading); font-size: 1.9rem; margin-bottom: 0.5rem;">Our approach</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 0.8rem;">
+        <div style="flex:1; min-width: 180px;"><span style="font-weight: 600; color: var(--brand-1);">01.</span> <strong>Science-backed</strong> — every technique explained with clarity.</div>
+        <div style="flex:1; min-width: 180px;"><span style="font-weight: 600; color: var(--brand-1);">02.</span> <strong>Hands-on</strong> — we bake alongside you, virtually and in person.</div>
+        <div style="flex:1; min-width: 180px;"><span style="font-weight: 600; color: var(--brand-1);">03.</span> <strong>Inclusive</strong> — from beginner to pro, we meet you where you are.</div>
+      </div>
+    </div>
 
-    <!-- Footer -->
+    <!-- FAQ about Doventha -->
+    <h2 class="section-title">About Doventha — FAQs</h2>
+    <div class="faq-item"><h4>Is Doventha only for professional bakers?</h4><p>Not at all. Our content is designed for home bakers, aspiring professionals, and anyone who wants to deepen their understanding of baking. We offer beginner-friendly guides alongside advanced techniques.</p></div>
+    <div class="faq-item"><h4>Do you offer in-person workshops?</h4><p>Yes, we host seasonal workshops in our home studio (currently in the UK and Italy). We also offer fully virtual workshops with interactive Q&A.</p></div>
+    <div class="faq-item"><h4>How can I join the community?</h4><p>Sign up for our newsletter to receive weekly insights, and join our forum (free) to connect with other bakers and ask questions.</p></div>
+
+    <!-- newsletter (consistent with homepage) -->
+    <div class="newsletter" style="background: var(--bg-surface); border-radius: var(--radius-lg); padding: 2.5rem 2.8rem; text-align: center; border: 1px solid var(--border-light); margin: 3rem 0 1.5rem;">
+      <h3 style="margin-bottom: 0.2rem;">The Doventha dispatch</h3>
+      <p style="margin-bottom: 1.2rem;">Weekly baking insights, recipes, and workshop news.</p>
+      <input type="email" placeholder="your email" aria-label="email" style="padding: 0.9rem 1.5rem; border: 1px solid var(--border-light); border-radius: 60px; min-width: 240px; background: var(--bg-body); font-family: var(--font-body);"> <button style="background: var(--brand-1); border: none; padding: 0.9rem 2rem; border-radius: 60px; color: white; font-weight: 600; font-size: 1rem; margin-left: 0.4rem; cursor: pointer; transition: 0.15s;">Subscribe</button>
+    </div>
+
+    <!-- footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>About ZenithFact Network</h3>
-                    <p>ZenithFact Network is a leading global news organization dedicated to delivering accurate, unbiased news coverage across all platforms. Our mission is to inform, educate, and empower our audience.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Advertise</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact Information</h3>
-                    <ul class="contact-info">
-                        <li><i class="fas fa-map-marker-alt"></i> 123 News Avenue, Metro City, MC 10001</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-ZENITH (936484)</li>
-                        <li><i class="fas fa-envelope"></i> contact@zenithfact.com</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 ZenithFact Network. All rights reserved.</p>
-            </div>
-        </div>
+      <div>© 2026 Doventha Bake Workshop · content-first baking education</div>
+      <div style="display: flex; gap: 1.5rem;"><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy</a></div>
     </footer>
+
+  </div> <!-- container -->
 </body>
 </html>
